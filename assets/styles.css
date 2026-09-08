@@ -342,3 +342,27 @@ h1,h2,h3,.btn,.nav,.kicker,.eyebrow,.card-num{font-family:Arial,Helvetica,sans-s
 .social-site{display:inline-flex;align-items:center;padding:9px 13px;border-radius:999px;color:#c8ff20;text-decoration:none;font-weight:800;font-size:13px;border:1px solid rgba(200,255,32,.45);white-space:nowrap}
 .social-site:hover{background:#c8ff20;color:#080a0b}
 @media (max-width:760px){.site-logo{width:205px;max-height:72px}.brand-lockup{min-width:205px}.social-bar{align-items:flex-start;flex-direction:column}.social-links{justify-content:flex-start}}
+
+/* Fix: Engineering Intelligence heading letter overlap */
+.engineering-intelligence,
+.engineering-intelligence h1,
+.engineering-intelligence h2,
+.engineering-intelligence h3 {
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    word-spacing: 0.08em;
+    white-space: normal;
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+    .engineering-intelligence,
+    .engineering-intelligence h1,
+    .engineering-intelligence h2,
+    .engineering-intelligence h3 {
+        font-size: clamp(28px, 7vw, 48px);
+        letter-spacing: 0;
+        line-height: 1.2;
+        word-spacing: 0.03em;
+    }
+}
