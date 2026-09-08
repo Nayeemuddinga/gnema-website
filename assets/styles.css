@@ -343,26 +343,23 @@ h1,h2,h3,.btn,.nav,.kicker,.eyebrow,.card-num{font-family:Arial,Helvetica,sans-s
 .social-site:hover{background:#c8ff20;color:#080a0b}
 @media (max-width:760px){.site-logo{width:205px;max-height:72px}.brand-lockup{min-width:205px}.social-bar{align-items:flex-start;flex-direction:column}.social-links{justify-content:flex-start}}
 
-/* Fix: Engineering Intelligence heading letter overlap */
-.engineering-intelligence,
-.engineering-intelligence h1,
-.engineering-intelligence h2,
-.engineering-intelligence h3 {
-    letter-spacing: 0.02em;
-    line-height: 1.15;
-    word-spacing: 0.08em;
-    white-space: normal;
-    overflow: visible;
+/* FIX: Prevent Engineering Intelligence hero text overlap */
+.hero h1 {
+    letter-spacing: -1px;
+    line-height: 0.95;
+}
+
+.hero h1 span {
+    letter-spacing: -1px;
 }
 
 @media (max-width: 768px) {
-    .engineering-intelligence,
-    .engineering-intelligence h1,
-    .engineering-intelligence h2,
-    .engineering-intelligence h3 {
-        font-size: clamp(28px, 7vw, 48px);
-        letter-spacing: 0;
-        line-height: 1.2;
-        word-spacing: 0.03em;
+    .hero h1 {
+        letter-spacing: -0.5px;
+        line-height: 1;
+    }
+
+    .hero h1 span {
+        letter-spacing: -0.5px;
     }
 }
