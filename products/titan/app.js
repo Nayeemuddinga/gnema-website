@@ -1,15 +1,16 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Use the official supplied G-NeMa artwork without modifying the image.
-// DG1 is the header logo; DG3 is the footer logo.
+// Official G-NeMa artwork: DG1 for header and DG3 for footer.
+const headerLogo = '<img src="/assets/logos/DG1.png" alt="G-NeMa — Galactic Nexus of Machines">';
+const footerLogo = '<img src="/assets/logos/DG3.png" alt="G-NeMa — Galactic Nexus of Machines">';
 document.querySelectorAll('header .brand').forEach(function(brand) {
-  brand.innerHTML = '<img src="/assets/logos/DG1.png" alt="G-NeMa — Galactic Nexus of Machines">';
+  brand.innerHTML = headerLogo;
   brand.style.width = '220px';
   brand.style.height = '62px';
   brand.style.display = 'block';
 });
 document.querySelectorAll('footer .brand').forEach(function(brand) {
-  brand.innerHTML = '<img src="/assets/logos/DG3.png" alt="G-NeMa — Galactic Nexus of Machines">';
+  brand.innerHTML = footerLogo;
   brand.style.width = '220px';
   brand.style.height = '62px';
   brand.style.display = 'block';
@@ -41,6 +42,21 @@ document.querySelectorAll('.flow article b').forEach(function(el) {
 
 document.querySelectorAll('.cap-grid h3').forEach(function(el) {
   el.style.marginTop = '20px';
+});
+
+// International pricing is displayed in USD across the public TITAN page.
+const usdPrices = ['$599', '$2,499', '$1,499'];
+document.querySelectorAll('.price-card .price').forEach(function(price, index) {
+  const amount = usdPrices[index];
+  if (!amount) return;
+  const small = price.querySelector('small');
+  price.textContent = amount + ' ';
+  if (small) {
+    price.appendChild(small);
+  }
+});
+document.querySelectorAll('.price-card .usd').forEach(function(el) {
+  el.remove();
 });
 
 const form = document.getElementById('titanForm');
