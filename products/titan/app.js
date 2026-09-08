@@ -23,6 +23,21 @@ document.querySelectorAll('.brand img').forEach(function(img) {
   img.style.display = 'block';
 });
 
+// Official G-NeMa Dot1 mark for browser tabs and installed shortcuts.
+if (!document.querySelector('link[rel="icon"]')) {
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/png';
+  favicon.href = '/assets/logos/Dot1.png';
+  document.head.appendChild(favicon);
+}
+if (!document.querySelector('link[rel="apple-touch-icon"]')) {
+  const touchIcon = document.createElement('link');
+  touchIcon.rel = 'apple-touch-icon';
+  touchIcon.href = '/assets/logos/Dot1.png';
+  document.head.appendChild(touchIcon);
+}
+
 document.querySelectorAll('.section-label').forEach(function(label) {
   label.textContent = label.textContent.replace(/^\s*\d+\s*\/\s*/, '');
 });
