@@ -10,6 +10,14 @@ document.querySelectorAll(".number, .cap-list > div > b, .industry-grid > div > 
   el.remove();
 });
 
+document.querySelectorAll(".card .icon").forEach(function(el) {
+  el.style.marginTop = "20px";
+});
+
+document.querySelectorAll(".industry-grid h3").forEach(function(el) {
+  el.style.marginTop = "20px";
+});
+
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   contactForm.addEventListener("submit", function(e) {
