@@ -31,8 +31,8 @@ h1{font-size:clamp(68px,8.2vw,122px);line-height:.9;letter-spacing:-6px;margin:0
 h1 span{color:#646b72}.hero-copy{font-size:20px;color:var(--muted);max-width:720px}.actions{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
 .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:54px;border-top:1px solid var(--line);padding-top:22px}
 .meta{display:flex;gap:13px;align-items:center;border-right:1px solid var(--line);padding-right:20px}.meta:last-child{border:0}.meta strong{display:block;font-size:18px}.meta small{color:var(--muted)}
-.orbit-wrap{min-height:560px;display:grid;place-items:center;position:relative}
-.orbit{width:min(470px,78vw);aspect-ratio:1;border-radius:50%;
+.orbit-wrap{min-height:500px;display:grid;place-items:center;position:relative}
+.orbit{width:min(410px,72vw);aspect-ratio:1;border-radius:50%;
 background:
 radial-gradient(circle at 35% 28%,#f4ffc7 0%,#dcff65 17%,#c6fb25 38%,#a9dc19 62%,#7d9e16 100%);
 box-shadow:0 0 55px rgba(200,255,32,.30),0 28px 75px rgba(41,54,12,.18),inset -30px -35px 70px rgba(43,59,5,.20),inset 20px 15px 45px rgba(255,255,255,.42);
