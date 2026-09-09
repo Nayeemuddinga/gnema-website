@@ -1,6 +1,6 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 17:46:24 UTC`
+Generated: `2026-09-09 17:46:42 UTC`
 
 ## Summary
 
@@ -12,7 +12,7 @@ Generated: `2026-09-09 17:46:24 UTC`
 
 ## Sitemap
 
-- Canonical URLs: **21**
+- Canonical URLs: **29**
 - Duplicate TITAN HTML URL present: **False**
 
 ## Page Audit
