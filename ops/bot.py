@@ -101,12 +101,21 @@ def audit_html(config):
     results = []
     required_meta = config["audit"]["required_meta"]
 
+    # These files are intentionally outside the normal indexable-page audit:
+    # 404.html is an error document and products/titan.html is a legacy redirect
+    # to the canonical TITAN directory URL.
+    excluded_pages = {
+        "404.html",
+        "products/titan.html",
+    }
+
     for path in sorted(ROOT.rglob("*.html")):
         if any(part in {".git", "node_modules"} for part in path.parts):
             continue
 
-        if path.as_posix() == "products/titan.html":
-            # Redirect page intentionally noindex.
+        relative_path = str(path.relative_to(ROOT)).replace("\\", "/")
+
+        if relative_path in excluded_pages:
             continue
 
         text = path.read_text(encoding="utf-8", errors="ignore")
@@ -139,7 +148,7 @@ def audit_html(config):
             warnings.append("description is long")
 
         results.append({
-            "file": str(path.relative_to(ROOT)).replace("\\", "/"),
+            "file": relative_path,
             "title": title,
             "canonical": canonical,
             "errors": errors,
