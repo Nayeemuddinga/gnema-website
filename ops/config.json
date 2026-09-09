@@ -1,0 +1,48 @@
+{
+  "site": {
+    "name": "G-NeMa",
+    "url": "https://gnema.in",
+    "sitemap": "https://gnema.in/sitemap.xml",
+    "robots": "https://gnema.in/robots.txt"
+  },
+  "ranking": {
+    "enabled": true,
+    "provider": "serpapi",
+    "google_domain": "google.com",
+    "location": "India",
+    "language": "en",
+    "queries": [
+      "G-NeMa",
+      "G-NeMa AI",
+      "enterprise AI G-NeMa",
+      "Oracle database AI",
+      "Oracle database performance monitoring AI",
+      "Oracle database autonomous optimization",
+      "multi-agent organization",
+      "enterprise AI operating layer",
+      "BankAI Nexus",
+      "space mission autonomy",
+      "space domain awareness AI",
+      "autonomous robotics AI",
+      "multi-robot orchestration",
+      "AI cybersecurity critical infrastructure"
+    ]
+  },
+  "audit": {
+    "required_meta": [
+      "description",
+      "robots"
+    ],
+    "require_canonical": true,
+    "require_title": true,
+    "require_jsonld": true
+  },
+  "reporting": {
+    "directory": "ops/reports",
+    "latest": "ops/reports/latest.md"
+  },
+  "github": {
+    "create_issue": false,
+    "issue_title": "G-NeMa SEO Ops Report"
+  }
+}
