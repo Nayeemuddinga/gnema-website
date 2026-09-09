@@ -1,29 +1,29 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 11:45:33 UTC`
+Generated: `2026-09-09 14:12:36 UTC`
 
 ## Summary
 
 - HTML files audited: **21**
-- Metadata errors: **2**
-- Metadata warnings: **5**
+- Metadata errors: **0**
+- Metadata warnings: **3**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
 ## Sitemap
 
-- Canonical URLs: **20**
+- Canonical URLs: **21**
 - Duplicate TITAN HTML URL present: **False**
 
 ## Page Audit
 
 | Page | Errors | Warnings | Canonical | |
 |---|---:|---:|---|---|
-| `404.html` | 1 | 1 | `https://gnema.in` | |
 | `about.html` | 0 | 0 | `https://gnema.in/about.html` | |
 | `contact.html` | 0 | 0 | `https://gnema.in/contact.html` | |
 | `index.html` | 0 | 0 | `https://gnema.in/` | |
 | `industries/index.html` | 0 | 0 | `https://gnema.in/industries/` | |
+| `privacy.html` | 0 | 0 | `https://gnema.in/privacy.html` | |
 | `products/aegis-defense.html` | 0 | 1 | `https://gnema.in/products/aegis-defense.html` | |
 | `products/atlas-robotics.html` | 0 | 0 | `https://gnema.in/products/atlas-robotics.html` | |
 | `products/bankai-nexus.html` | 0 | 0 | `https://gnema.in/products/bankai-nexus.html` | |
@@ -37,9 +37,9 @@ Generated: `2026-09-09 11:45:33 UTC`
 | `products/sentinel-cyber.html` | 0 | 1 | `https://gnema.in/products/sentinel-cyber.html` | |
 | `products/sentinel-orbit.html` | 0 | 0 | `https://gnema.in/products/sentinel-orbit.html` | |
 | `products/titan/index.html` | 0 | 1 | `https://gnema.in/products/titan/` | |
-| `products/titan.html` | 1 | 1 | `https://gnema.in/products/titan/` | |
 | `research/index.html` | 0 | 0 | `https://gnema.in/research/` | |
 | `solutions/index.html` | 0 | 0 | `https://gnema.in/solutions/` | |
+| `terms.html` | 0 | 0 | `https://gnema.in/terms.html` | |
 
 ## Ranking
 
