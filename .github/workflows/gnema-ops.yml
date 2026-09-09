@@ -4,8 +4,9 @@ on:
   workflow_dispatch:
 
   schedule:
-    # Daily at 06:30 UTC.
+    # Daily technical SEO; weekly Search Console report on Monday.
     - cron: "30 6 * * *"
+    - cron: "0 7 * * 1"
 
   push:
     branches:
@@ -37,22 +38,30 @@ jobs:
         run: |
           python ops/bot.py
 
-      - name: Upload SEO report
+      - name: Run Search Console authority tracker
+        env:
+          GSC_CLIENT_ID: ${{ secrets.GSC_CLIENT_ID }}
+          GSC_CLIENT_SECRET: ${{ secrets.GSC_CLIENT_SECRET }}
+          GSC_REFRESH_TOKEN: ${{ secrets.GSC_REFRESH_TOKEN }}
+        run: |
+          python ops/search_console.py
+
+      - name: Upload SEO reports
         uses: actions/upload-artifact@v4
         with:
           name: gnema-seo-report
           path: ops/reports/
 
-      - name: Commit latest Ops report
+      - name: Commit latest Ops reports
         run: |
           git config user.name "G-NeMa Ops Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add ops/reports/latest.md
+          git add ops/reports/latest.md ops/reports/search-console.md
 
           if git diff --cached --quiet; then
             echo "No report change to commit."
           else
-            git commit -m "chore(seo): update G-NeMa Ops report"
+            git commit -m "chore(seo): update G-NeMa Ops reports"
             git push origin main
           fi
