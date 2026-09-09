@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 18:24:21 UTC`
+Generated: `2026-09-09 18:24:41 UTC`
 
 ## Summary
 
 - HTML files audited: **29**
 - Metadata errors: **0**
-- Metadata warnings: **9**
+- Metadata warnings: **8**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -39,8 +39,7 @@ Generated: `2026-09-09 18:24:21 UTC`
 | `products/atlas-robotics.html` | 0 | 0 | `https://gnema.in/products/atlas-robotics.html` | |
 | `products/bankai-nexus.html` | 0 | 0 | `https://gnema.in/products/bankai-nexus.html` | |
 | `products/causal-world-simulation.html` | 0 | 0 | `https://gnema.in/products/causal-world-simulation.html` | |
-| `products/enterprise-ai-operating-layer.html` | 0 | 1 | `https://gnema.in/products/enterprise-ai-operating-layer.html` | |
-| ↳ Warning | | description is long (182 characters) | | |
+| `products/enterprise-ai-operating-layer.html` | 0 | 0 | `https://gnema.in/products/enterprise-ai-operating-layer.html` | |
 | `products/forge-robotics.html` | 0 | 0 | `https://gnema.in/products/forge-robotics.html` | |
 | `products/index.html` | 0 | 0 | `https://gnema.in/products/` | |
 | `products/knowledge-distillation.html` | 0 | 1 | `https://gnema.in/products/knowledge-distillation.html` | |
