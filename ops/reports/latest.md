@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 18:24:59 UTC`
+Generated: `2026-09-09 18:25:26 UTC`
 
 ## Summary
 
 - HTML files audited: **29**
 - Metadata errors: **0**
-- Metadata warnings: **7**
+- Metadata warnings: **6**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -49,8 +49,7 @@ Generated: `2026-09-09 18:24:59 UTC`
 | ↳ Warning | | title longer than 70 characters (77 characters) | | |
 | `products/sentinel-orbit.html` | 0 | 0 | `https://gnema.in/products/sentinel-orbit.html` | |
 | `products/titan/index.html` | 0 | 0 | `https://gnema.in/products/titan/` | |
-| `research/index.html` | 0 | 1 | `https://gnema.in/research/` | |
-| ↳ Warning | | description is long (185 characters) | | |
+| `research/index.html` | 0 | 0 | `https://gnema.in/research/` | |
 | `solutions/index.html` | 0 | 2 | `https://gnema.in/solutions/` | |
 | ↳ Warning | | title longer than 70 characters (77 characters) | | |
 | ↳ Warning | | description is long (171 characters) | | |
