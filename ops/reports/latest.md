@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 17:34:20 UTC`
+Generated: `2026-09-09 17:45:04 UTC`
 
 ## Summary
 
-- HTML files audited: **21**
+- HTML files audited: **22**
 - Metadata errors: **0**
-- Metadata warnings: **4**
+- Metadata warnings: **5**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -23,6 +23,8 @@ Generated: `2026-09-09 17:34:20 UTC`
 | `contact.html` | 0 | 0 | `https://gnema.in/contact.html` | |
 | `index.html` | 0 | 0 | `https://gnema.in/` | |
 | `industries/index.html` | 0 | 0 | `https://gnema.in/industries/` | |
+| `insights/index.html` | 0 | 1 | `https://gnema.in/insights/` | |
+| ↳ Warning | | title longer than 70 characters (76 characters) | | |
 | `privacy.html` | 0 | 0 | `https://gnema.in/privacy.html` | |
 | `products/aegis-defense.html` | 0 | 0 | `https://gnema.in/products/aegis-defense.html` | |
 | `products/atlas-robotics.html` | 0 | 0 | `https://gnema.in/products/atlas-robotics.html` | |
