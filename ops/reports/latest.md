@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 18:34:52 UTC`
+Generated: `2026-09-09 18:35:27 UTC`
 
 ## Summary
 
 - HTML files audited: **29**
 - Metadata errors: **0**
-- Metadata warnings: **5**
+- Metadata warnings: **4**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -23,8 +23,7 @@ Generated: `2026-09-09 18:34:52 UTC`
 | ↳ Warning | | description is long (171 characters) | | |
 | `contact.html` | 0 | 0 | `https://gnema.in/contact.html` | |
 | `index.html` | 0 | 0 | `https://gnema.in/` | |
-| `industries/index.html` | 0 | 1 | `https://gnema.in/industries/` | |
-| ↳ Warning | | title longer than 70 characters (76 characters) | | |
+| `industries/index.html` | 0 | 0 | `https://gnema.in/industries/` | |
 | `insights/ai-cybersecurity.html` | 0 | 0 | `https://gnema.in/insights/ai-cybersecurity.html` | |
 | `insights/defense-ai.html` | 0 | 0 | `https://gnema.in/insights/defense-ai.html` | |
 | `insights/enterprise-ai.html` | 0 | 0 | `https://gnema.in/insights/enterprise-ai.html` | |
