@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 16:57:09 UTC`
+Generated: `2026-09-09 17:03:17 UTC`
 
 ## Summary
 
 - HTML files audited: **21**
 - Metadata errors: **0**
-- Metadata warnings: **2**
+- Metadata warnings: **3**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -33,7 +33,8 @@ Generated: `2026-09-09 16:57:09 UTC`
 | ↳ Warning | | description is long (182 characters) | | |
 | `products/forge-robotics.html` | 0 | 0 | `https://gnema.in/products/forge-robotics.html` | |
 | `products/index.html` | 0 | 0 | `https://gnema.in/products/` | |
-| `products/knowledge-distillation.html` | 0 | 0 | `https://gnema.in/products/knowledge-distillation.html` | |
+| `products/knowledge-distillation.html` | 0 | 1 | `https://gnema.in/products/knowledge-distillation.html` | |
+| ↳ Warning | | description is long (175 characters) | | |
 | `products/multi-agent-organization.html` | 0 | 0 | `https://gnema.in/products/multi-agent-organization.html` | |
 | `products/orbitalis.html` | 0 | 0 | `https://gnema.in/products/orbitalis.html` | |
 | `products/sentinel-cyber.html` | 0 | 0 | `https://gnema.in/products/sentinel-cyber.html` | |
