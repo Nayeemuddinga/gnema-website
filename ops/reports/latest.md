@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 18:19:21 UTC`
+Generated: `2026-09-09 18:24:21 UTC`
 
 ## Summary
 
 - HTML files audited: **29**
 - Metadata errors: **0**
-- Metadata warnings: **10**
+- Metadata warnings: **9**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -37,8 +37,7 @@ Generated: `2026-09-09 18:19:21 UTC`
 | `privacy.html` | 0 | 0 | `https://gnema.in/privacy.html` | |
 | `products/aegis-defense.html` | 0 | 0 | `https://gnema.in/products/aegis-defense.html` | |
 | `products/atlas-robotics.html` | 0 | 0 | `https://gnema.in/products/atlas-robotics.html` | |
-| `products/bankai-nexus.html` | 0 | 1 | `https://gnema.in/products/bankai-nexus.html` | |
-| ↳ Warning | | description is long (175 characters) | | |
+| `products/bankai-nexus.html` | 0 | 0 | `https://gnema.in/products/bankai-nexus.html` | |
 | `products/causal-world-simulation.html` | 0 | 0 | `https://gnema.in/products/causal-world-simulation.html` | |
 | `products/enterprise-ai-operating-layer.html` | 0 | 1 | `https://gnema.in/products/enterprise-ai-operating-layer.html` | |
 | ↳ Warning | | description is long (182 characters) | | |
