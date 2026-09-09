@@ -1,0 +1,27 @@
+{
+  "plan": "G-NeMa Authority Engine",
+  "duration_days": 90,
+  "cadence": "2 articles per week for 10 weeks",
+  "articles": [
+    {"priority":1,"week":1,"cluster":"enterprise-ai","title":"Enterprise AI Operating Layer: Architecture, Governance and Execution","slug":"enterprise-ai-operating-layer-architecture","destination":"/products/enterprise-ai-operating-layer.html"},
+    {"priority":2,"week":1,"cluster":"multi-agent-ai","title":"What Is a Multi-Agent Organization? Architecture, Roles and Control","slug":"what-is-a-multi-agent-organization","destination":"/products/multi-agent-organization.html"},
+    {"priority":3,"week":2,"cluster":"enterprise-ai","title":"Enterprise AI Agents: From Chatbots to Governed Workflows","slug":"enterprise-ai-agents-governed-workflows","destination":"/products/enterprise-ai-operating-layer.html"},
+    {"priority":4,"week":2,"cluster":"enterprise-ai","title":"AI Agent Governance: Policies, Validation and Human Oversight","slug":"ai-agent-governance-policies-validation","destination":"/products/enterprise-ai-operating-layer.html"},
+    {"priority":5,"week":3,"cluster":"multi-agent-ai","title":"Multi-Agent Orchestration: How Specialized AI Agents Work Together","slug":"multi-agent-orchestration-specialized-agents","destination":"/products/multi-agent-organization.html"},
+    {"priority":6,"week":3,"cluster":"oracle-database-ai","title":"Oracle Database Performance Monitoring with AI","slug":"oracle-database-performance-monitoring-ai","destination":"/products/titan/"},
+    {"priority":7,"week":4,"cluster":"oracle-database-ai","title":"AI-Based Oracle Root Cause Analysis: From Signal to Diagnosis","slug":"ai-oracle-root-cause-analysis","destination":"/products/titan/"},
+    {"priority":8,"week":4,"cluster":"oracle-database-ai","title":"Safe AI SQL Optimization: Recommendations, Controls and Rollback","slug":"safe-ai-sql-optimization","destination":"/products/titan/"},
+    {"priority":9,"week":5,"cluster":"oracle-database-ai","title":"Autonomous Oracle Database Monitoring: What AI Should and Should Not Automate","slug":"autonomous-oracle-database-monitoring","destination":"/products/titan/"},
+    {"priority":10,"week":5,"cluster":"oracle-database-ai","title":"Database Intelligence Architecture: Observability, Correlation and Evidence","slug":"database-intelligence-architecture","destination":"/products/titan/"},
+    {"priority":11,"week":6,"cluster":"space-ai","title":"Space Mission Autonomy: Onboard Decision Intelligence and Human Oversight","slug":"space-mission-autonomy-decision-intelligence","destination":"/products/orbitalis.html"},
+    {"priority":12,"week":6,"cluster":"space-ai","title":"Space Domain Awareness AI: Conjunction Analysis and Orbital Resilience","slug":"space-domain-awareness-ai","destination":"/products/sentinel-orbit.html"},
+    {"priority":13,"week":7,"cluster":"space-ai","title":"AI for Satellite Fleet Operations: Health, Anomalies and Mission Resilience","slug":"ai-satellite-fleet-operations","destination":"/products/orbitalis.html"},
+    {"priority":14,"week":7,"cluster":"robotics-ai","title":"Embodied AI for Robotics: Perception, Planning and Safe Execution","slug":"embodied-ai-robotics","destination":"/products/forge-robotics.html"},
+    {"priority":15,"week":8,"cluster":"robotics-ai","title":"Multi-Robot Mission Orchestration: Planning, Allocation and Coordination","slug":"multi-robot-mission-orchestration","destination":"/products/atlas-robotics.html"},
+    {"priority":16,"week":8,"cluster":"robotics-ai","title":"Simulation-to-Real Robotics: Why Digital Twins Matter for Autonomous Systems","slug":"simulation-to-real-robotics","destination":"/products/forge-robotics.html"},
+    {"priority":17,"week":9,"cluster":"ai-cybersecurity","title":"AI Cybersecurity for Critical Infrastructure: Detection, Correlation and Response","slug":"ai-cybersecurity-critical-infrastructure","destination":"/products/sentinel-cyber.html"},
+    {"priority":18,"week":9,"cluster":"ai-cybersecurity","title":"AI Security Operations: Using AI for Investigation Without Losing Control","slug":"ai-security-operations-control","destination":"/products/sentinel-cyber.html"},
+    {"priority":19,"week":10,"cluster":"defense-ai","title":"Defense AI for Mission Assurance: Readiness, Logistics and Decision Support","slug":"defense-ai-mission-assurance","destination":"/products/aegis-defense.html"},
+    {"priority":20,"week":10,"cluster":"defense-ai","title":"Human-in-the-Loop AI for High-Consequence Systems","slug":"human-in-the-loop-ai-high-consequence","destination":"/products/aegis-defense.html"}
+  ]
+}
