@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 17:45:04 UTC`
+Generated: `2026-09-09 17:46:03 UTC`
 
 ## Summary
 
-- HTML files audited: **22**
+- HTML files audited: **27**
 - Metadata errors: **0**
-- Metadata warnings: **5**
+- Metadata warnings: **12**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -23,8 +23,20 @@ Generated: `2026-09-09 17:45:04 UTC`
 | `contact.html` | 0 | 0 | `https://gnema.in/contact.html` | |
 | `index.html` | 0 | 0 | `https://gnema.in/` | |
 | `industries/index.html` | 0 | 0 | `https://gnema.in/industries/` | |
+| `insights/enterprise-ai.html` | 0 | 1 | `https://gnema.in/insights/enterprise-ai.html` | |
+| ↳ Warning | | missing JSON-LD | | |
 | `insights/index.html` | 0 | 1 | `https://gnema.in/insights/` | |
 | ↳ Warning | | title longer than 70 characters (76 characters) | | |
+| `insights/multi-agent-ai.html` | 0 | 2 | `https://gnema.in/insights/multi-agent-ai.html` | |
+| ↳ Warning | | missing JSON-LD | | |
+| ↳ Warning | | title longer than 70 characters (74 characters) | | |
+| `insights/oracle-database-ai.html` | 0 | 1 | `https://gnema.in/insights/oracle-database-ai.html` | |
+| ↳ Warning | | missing JSON-LD | | |
+| `insights/robotics-ai.html` | 0 | 1 | `https://gnema.in/insights/robotics-ai.html` | |
+| ↳ Warning | | missing JSON-LD | | |
+| `insights/space-ai.html` | 0 | 2 | `https://gnema.in/insights/space-ai.html` | |
+| ↳ Warning | | missing JSON-LD | | |
+| ↳ Warning | | title longer than 70 characters (80 characters) | | |
 | `privacy.html` | 0 | 0 | `https://gnema.in/privacy.html` | |
 | `products/aegis-defense.html` | 0 | 0 | `https://gnema.in/products/aegis-defense.html` | |
 | `products/atlas-robotics.html` | 0 | 0 | `https://gnema.in/products/atlas-robotics.html` | |
