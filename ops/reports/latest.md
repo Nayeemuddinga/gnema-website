@@ -1,12 +1,12 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 14:31:52 UTC`
+Generated: `2026-09-09 14:46:34 UTC`
 
 ## Summary
 
 - HTML files audited: **21**
 - Metadata errors: **0**
-- Metadata warnings: **3**
+- Metadata warnings: **0**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
@@ -24,7 +24,7 @@ Generated: `2026-09-09 14:31:52 UTC`
 | `index.html` | 0 | 0 | `https://gnema.in/` | |
 | `industries/index.html` | 0 | 0 | `https://gnema.in/industries/` | |
 | `privacy.html` | 0 | 0 | `https://gnema.in/privacy.html` | |
-| `products/aegis-defense.html` | 0 | 1 | `https://gnema.in/products/aegis-defense.html` | |
+| `products/aegis-defense.html` | 0 | 0 | `https://gnema.in/products/aegis-defense.html` | |
 | `products/atlas-robotics.html` | 0 | 0 | `https://gnema.in/products/atlas-robotics.html` | |
 | `products/bankai-nexus.html` | 0 | 0 | `https://gnema.in/products/bankai-nexus.html` | |
 | `products/causal-world-simulation.html` | 0 | 0 | `https://gnema.in/products/causal-world-simulation.html` | |
@@ -34,9 +34,9 @@ Generated: `2026-09-09 14:31:52 UTC`
 | `products/knowledge-distillation.html` | 0 | 0 | `https://gnema.in/products/knowledge-distillation.html` | |
 | `products/multi-agent-organization.html` | 0 | 0 | `https://gnema.in/products/multi-agent-organization.html` | |
 | `products/orbitalis.html` | 0 | 0 | `https://gnema.in/products/orbitalis.html` | |
-| `products/sentinel-cyber.html` | 0 | 1 | `https://gnema.in/products/sentinel-cyber.html` | |
+| `products/sentinel-cyber.html` | 0 | 0 | `https://gnema.in/products/sentinel-cyber.html` | |
 | `products/sentinel-orbit.html` | 0 | 0 | `https://gnema.in/products/sentinel-orbit.html` | |
-| `products/titan/index.html` | 0 | 1 | `https://gnema.in/products/titan/` | |
+| `products/titan/index.html` | 0 | 0 | `https://gnema.in/products/titan/` | |
 | `research/index.html` | 0 | 0 | `https://gnema.in/research/` | |
 | `solutions/index.html` | 0 | 0 | `https://gnema.in/solutions/` | |
 | `terms.html` | 0 | 0 | `https://gnema.in/terms.html` | |
