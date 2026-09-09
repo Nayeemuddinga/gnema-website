@@ -1,6 +1,6 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 14:20:10 UTC`
+Generated: `2026-09-09 14:31:52 UTC`
 
 ## Summary
 
@@ -43,7 +43,22 @@ Generated: `2026-09-09 14:20:10 UTC`
 
 ## Ranking
 
-- SERPAPI_KEY not set; ranking check skipped.
+| Query | Position | URL |
+|---|---:|---|
+| G-NeMa | Not found | - |
+| G-NeMa AI | Not found | - |
+| enterprise AI G-NeMa | Not found | - |
+| Oracle database AI | Not found | - |
+| Oracle database performance monitoring AI | Not found | - |
+| Oracle database autonomous optimization | Not found | - |
+| multi-agent organization | Not found | - |
+| enterprise AI operating layer | Not found | - |
+| BankAI Nexus | Not found | - |
+| space mission autonomy | Not found | - |
+| space domain awareness AI | Not found | - |
+| autonomous robotics AI | Not found | - |
+| multi-robot orchestration | Not found | - |
+| AI cybersecurity critical infrastructure | Not found | - |
 
 ## Recommended Actions
 
