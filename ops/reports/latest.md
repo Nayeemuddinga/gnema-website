@@ -1,6 +1,6 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 18:18:30 UTC`
+Generated: `2026-09-09 18:19:05 UTC`
 
 ## Summary
 
@@ -20,7 +20,7 @@ Generated: `2026-09-09 18:18:30 UTC`
 | Page | Errors | Warnings | Canonical | |
 |---|---:|---:|---|---|
 | `about.html` | 0 | 1 | `https://gnema.in/about.html` | |
-| ↳ Warning | | description is long (181 characters) | | |
+| ↳ Warning | | description is long (171 characters) | | |
 | `contact.html` | 0 | 2 | `https://gnema.in/contact.html` | |
 | ↳ Warning | | title longer than 70 characters (75 characters) | | |
 | ↳ Warning | | description is long (172 characters) | | |
