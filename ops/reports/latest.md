@@ -1,18 +1,18 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-09 18:53:46 UTC`
+Generated: `2026-09-10 17:09:16 UTC`
 
 ## Summary
 
-- HTML files audited: **29**
+- HTML files audited: **32**
 - Metadata errors: **0**
-- Metadata warnings: **0**
+- Metadata warnings: **3**
 - Sitemap: **PASS**
 - Robots: **PASS**
 
 ## Sitemap
 
-- Canonical URLs: **29**
+- Canonical URLs: **31**
 - Duplicate TITAN HTML URL present: **False**
 
 ## Page Audit
@@ -20,7 +20,9 @@ Generated: `2026-09-09 18:53:46 UTC`
 | Page | Errors | Warnings | Canonical | |
 |---|---:|---:|---|---|
 | `about.html` | 0 | 0 | `https://gnema.in/about.html` | |
-| `contact.html` | 0 | 0 | `https://gnema.in/contact.html` | |
+| `assessment/titan.html` | 0 | 0 | `https://gnema.in/assessment/titan.html` | |
+| `contact.html` | 0 | 1 | `https://gnema.in/contact.html` | |
+| ↳ Warning | | missing JSON-LD | | |
 | `index.html` | 0 | 0 | `https://gnema.in/` | |
 | `industries/index.html` | 0 | 0 | `https://gnema.in/industries/` | |
 | `insights/ai-cybersecurity.html` | 0 | 0 | `https://gnema.in/insights/ai-cybersecurity.html` | |
@@ -31,6 +33,8 @@ Generated: `2026-09-09 18:53:46 UTC`
 | `insights/oracle-database-ai.html` | 0 | 0 | `https://gnema.in/insights/oracle-database-ai.html` | |
 | `insights/robotics-ai.html` | 0 | 0 | `https://gnema.in/insights/robotics-ai.html` | |
 | `insights/space-ai.html` | 0 | 0 | `https://gnema.in/insights/space-ai.html` | |
+| `pricing.html` | 0 | 1 | `https://gnema.in/pricing.html` | |
+| ↳ Warning | | missing JSON-LD | | |
 | `privacy.html` | 0 | 0 | `https://gnema.in/privacy.html` | |
 | `products/aegis-defense.html` | 0 | 0 | `https://gnema.in/products/aegis-defense.html` | |
 | `products/atlas-robotics.html` | 0 | 0 | `https://gnema.in/products/atlas-robotics.html` | |
@@ -48,6 +52,8 @@ Generated: `2026-09-09 18:53:46 UTC`
 | `research/index.html` | 0 | 0 | `https://gnema.in/research/` | |
 | `solutions/index.html` | 0 | 0 | `https://gnema.in/solutions/` | |
 | `terms.html` | 0 | 0 | `https://gnema.in/terms.html` | |
+| `thank-you.html` | 0 | 1 | `https://gnema.in/thank-you.html` | |
+| ↳ Warning | | missing JSON-LD | | |
 
 ## Ranking
 
