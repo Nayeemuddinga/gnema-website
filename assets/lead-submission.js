@@ -28,7 +28,14 @@
         const destination = form.dataset.successUrl;
         if (destination) window.location.assign(destination);
         else if (status) status.textContent = "Thank you. Your request has been received.";
-      } catch { if (status) status.textContent = "We could not send your request. Please try again or contact G-NeMa directly."; }
+      } catch {
+        if (form.dataset.leadFallbackAttempted !== "true") {
+          form.dataset.leadFallbackAttempted = "true";
+          form.submit();
+          return;
+        }
+        if (status) status.textContent = "We could not send your request. Please try again or contact G-NeMa directly.";
+      }
     });
   });
 }());
