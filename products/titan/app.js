@@ -61,10 +61,20 @@ document.querySelectorAll('.price-card .usd').forEach(function(el) {
 
 const form = document.getElementById('titanForm');
 if (form) {
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     const message = document.getElementById('formMessage');
-    message.textContent = 'Thank you. Your TITAN assessment request has been captured. We will respond with the next step.';
-    form.reset();
+    try {
+      if (window.gnemaLeadSubmission?.isConfigured(form)) {
+        await window.gnemaLeadSubmission.submit(form);
+        message.textContent = 'Thank you. Your TITAN assessment request has been received. We will respond with the next step.';
+        form.reset();
+        return;
+      }
+      message.textContent = 'Thank you. Your TITAN assessment request has been captured. We will respond with the next step.';
+      form.reset();
+    } catch {
+      message.textContent = 'We could not send your request. Please try again or contact G-NeMa directly.';
+    }
   });
 }

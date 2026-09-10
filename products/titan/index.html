@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="styles.css" />
 
 <title>TITAN | Autonomous Oracle Database Intelligence &amp; Protection | G-NeMa</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="TITAN by G-NeMa provides autonomous Oracle database intelligence, performance diagnosis, safe optimization recommendations and deterministic protection controls.">
 <link rel="canonical" href="https://gnema.in/products/titan/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -46,30 +45,7 @@
       },
       "manufacturer": {
         "@id": "https://gnema.in/#organization"
-      },
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "TITAN Assessment",
-          "price": "49000",
-          "priceCurrency": "INR",
-          "url": "https://gnema.in/products/titan/"
-        },
-        {
-          "@type": "Offer",
-          "name": "TITAN Pilot",
-          "price": "199000",
-          "priceCurrency": "INR",
-          "url": "https://gnema.in/products/titan/"
-        },
-        {
-          "@type": "Offer",
-          "name": "TITAN Managed",
-          "price": "99000",
-          "priceCurrency": "INR",
-          "url": "https://gnema.in/products/titan/"
-        }
-      ]
+      }
     },
     {
       "@type": "WebPage",
@@ -292,11 +268,12 @@
     <section id="contact" class="contact-section">
       <div class="container contact-box">
         <div><span class="section-label light">TITAN · NEXT STEP</span><h2>Find out what<br>your database is hiding.</h2><p>Tell us about your Oracle environment and the performance problem you want to solve. We will recommend the most appropriate starting engagement.</p><div class="contact-meta"><span>gnema.in</span><span>ga@gnema.in</span></div></div>
-        <form id="titanForm">
+        <form id="titanForm" data-gnema-lead-form="titan-assessment">
           <label>Name<input name="name" type="text" placeholder="Your name" required /></label>
           <label>Work email<input name="email" type="email" placeholder="you@company.com" required /></label>
           <label>Company<input name="company" type="text" placeholder="Company" required /></label>
           <label>Environment<textarea name="message" placeholder="Oracle version, approximate database size, main performance issue, or anything you want TITAN to assess." required></textarea></label>
+          <label class="consent"><input name="consent" type="checkbox" value="yes" required /> I agree that G-NeMa may contact me regarding this assessment request.</label>
           <button class="btn primary" type="submit">Request TITAN assessment →</button>
           <small id="formMessage"></small>
         </form>
@@ -305,6 +282,6 @@
   </main>
 
   <footer><div class="container footer-grid"><div><a class="brand" href="/"><span class="brand-mark">G</span><span>-NeMa</span></a><p>Engineering Intelligence for the enterprise.</p></div><div><span>G-NEMA</span><a href="/">Company</a><a href="/products/titan/">TITAN</a><a href="#pricing">Pricing</a></div><div><span>CONNECT</span><a href="mailto:ga@gnema.in">ga@gnema.in</a><a href="#contact">Request assessment</a></div></div><div class="container footer-bottom">© <span id="year"></span> G-NeMa. TITAN is a G-NeMa product. <span>gnema.in</span></div></footer>
-  <script src="app.js"></script>
+  <script src="../../assets/lead-submission.js"></script><script src="app.js"></script>
 </body>
 </html>
