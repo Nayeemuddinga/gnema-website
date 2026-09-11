@@ -1,6 +1,6 @@
 # G-NeMa SEO Operations Report
 
-Generated: `2026-09-10 18:41:15 UTC`
+Generated: `2026-09-11 11:43:20 UTC`
 
 ## Summary
 
@@ -60,7 +60,7 @@ Generated: `2026-09-10 18:41:15 UTC`
 | Query | Position | URL |
 |---|---:|---|
 | G-NeMa | Not found | - |
-| G-NeMa AI | 3 | https://gnema.in/ |
+| G-NeMa AI | Not found | - |
 | enterprise AI G-NeMa | Not found | - |
 | Oracle database AI | Not found | - |
 | Oracle database performance monitoring AI | Not found | - |
