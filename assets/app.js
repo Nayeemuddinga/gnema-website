@@ -10,21 +10,33 @@
   if (nav && !nav.id) nav.id = navId;
   if (nav) nav.setAttribute('aria-label', nav.getAttribute('aria-label') || 'Primary navigation');
 
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
   const setMenuState = (open) => {
     if (!menu || !nav) return;
     menu.setAttribute('aria-expanded', String(open));
     menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     nav.classList.toggle('is-open', open);
-    if (window.matchMedia('(max-width: 900px)').matches) nav.style.display = open ? 'flex' : 'none';
-    else nav.style.display = '';
+    nav.style.display = isMobile() ? (open ? 'flex' : 'none') : '';
+    if (open) nav.querySelector('a')?.focus();
   };
 
-  menu?.addEventListener('click', () => setMenuState(menu.getAttribute('aria-expanded') !== 'true'));
-  menu?.addEventListener('keydown', (event) => { if (event.key === 'Escape') { setMenuState(false); menu.focus(); } });
-  nav?.addEventListener('click', (event) => {
-    if (event.target.closest('a') && window.matchMedia('(max-width: 900px)').matches) setMenuState(false);
-  });
-  window.addEventListener('resize', () => { if (!window.matchMedia('(max-width: 900px)').matches) setMenuState(false); });
+  if (menu && nav) {
+    if (!menu.hasAttribute('aria-expanded')) menu.setAttribute('aria-expanded', 'false');
+    menu.addEventListener('click', () => setMenuState(menu.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        menu.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (isMobile() && menu.getAttribute('aria-expanded') === 'true' && !nav.contains(event.target) && !menu.contains(event.target)) setMenuState(false);
+    });
+    nav.addEventListener('click', (event) => {
+      if (event.target.closest('a') && isMobile()) setMenuState(false);
+    });
+    window.addEventListener('resize', () => { if (!isMobile()) setMenuState(false); });
+  }
 
   document.querySelectorAll('[data-contact]').forEach((a) => a.addEventListener('click', () => { location.href = '/contact.html'; }));
 
@@ -47,8 +59,7 @@
     window.gnemaAnalytics.track(type, { form_action: form.getAttribute('action') || '' });
   }));
 
-  // Progressive enhancement only: critical navigation and CTAs live in HTML.
-  // Legacy homepage builds that lack Architecture links are upgraded here.
+  // Progressive enhancement for legacy homepage markup.
   if (location.pathname === '/' || location.pathname === '/index.html') {
     if (nav && !nav.querySelector('a[href="/architecture/"]')) {
       const researchLink = Array.from(nav.querySelectorAll('a')).find((a) => a.getAttribute('href') === 'research/index.html');
