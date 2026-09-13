@@ -1,9 +1,12 @@
 /* G-NeMa production security policy */
-/* CSP intentionally avoids external font/script hosts; the site is static and self-contained. */
-/* Cloudflare Pages serves this file as response headers. */
+/* Static-site response headers for Cloudflare Workers. */
 /*
-  Content-Security-Policy is scoped to the current static architecture.
-  Inline styles/scripts remain supported because existing pages use them.
+  The Pages-style _headers file format requires each header declaration to
+  use a colon-separated name/value pair. Comments are retained for context.
+*/
+
+/*
+  X-Content-Type-Options and X-Frame-Options protect every static response.
 */
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
