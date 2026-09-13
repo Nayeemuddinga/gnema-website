@@ -2,6 +2,7 @@ export default {
   async fetch(request, env) {
     const response = await env.ASSETS.fetch(request);
     const secured = new Response(response.body, response);
+    secured.headers.set("X-GNeMa-Worker", "active");
     secured.headers.set("X-Content-Type-Options", "nosniff");
     secured.headers.set("X-Frame-Options", "DENY");
     secured.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
