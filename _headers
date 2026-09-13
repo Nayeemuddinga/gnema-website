@@ -1,9 +1,13 @@
+/* G-NeMa production security policy */
+/* CSP intentionally avoids external font/script hosts; the site is static and self-contained. */
+/* Cloudflare Pages serves this file as response headers. */
 /*
-  G-NeMa production security headers.
-  CSP is kept conservative until all third-party integrations are explicitly allowlisted.
+  Content-Security-Policy is scoped to the current static architecture.
+  Inline styles/scripts remain supported because existing pages use them.
 */
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 Referrer-Policy: strict-origin-when-cross-origin
 Permissions-Policy: accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https:; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https:; upgrade-insecure-requests
