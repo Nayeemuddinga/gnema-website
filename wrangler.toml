@@ -4,3 +4,7 @@ compatibility_date = "2026-09-11"
 [assets]
 directory = "./public"
 not_found_handling = "404-page"
+
+[[routes]]
+pattern = "gnema.in"
+custom_domain = true
