@@ -22,22 +22,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f index.html
-          test -f architecture/index.html
-          test -f assets/styles.css
-          test -f assets/app.js
-          test -f robots.txt
-          test -f sitemap.xml
-          test -f 404.html
-          test -f _headers
+          test -f public/index.html
+          test -f public/architecture/index.html
+          test -f public/assets/styles.css
+          test -f public/assets/app.js
+          test -f public/robots.txt
+          test -f public/sitemap.xml
+          test -f public/404.html
+          test -f public/_headers
       - name: Validate HTML structure and critical links
         shell: python
         run: |
           import pathlib, re, sys
-          root = pathlib.Path('.')
+          root = pathlib.Path('public')
           failures=[]
           for p in root.rglob('*.html'):
-              if any(x in {'.git','node_modules'} for x in p.parts): continue
               s=p.read_text(encoding='utf-8',errors='ignore')
               if '<!doctype html>' not in s.lower(): failures.append(f'{p}: missing doctype')
               if '<html' not in s.lower() or '</html>' not in s.lower(): failures.append(f'{p}: malformed html root')
@@ -51,14 +50,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          node --check assets/app.js
-          node --check assets/lead-submission.js
+          while IFS= read -r -d '' file; do node --check "$file"; done < <(find public -type f -name '*.js' -print0)
       - name: Validate sitemap and robots
         shell: python
         run: |
           import pathlib, re, sys
-          sm=pathlib.Path('sitemap.xml').read_text(encoding='utf-8')
-          rb=pathlib.Path('robots.txt').read_text(encoding='utf-8')
+          sm=pathlib.Path('public/sitemap.xml').read_text(encoding='utf-8')
+          rb=pathlib.Path('public/robots.txt').read_text(encoding='utf-8')
           urls=re.findall(r'<loc>(.*?)</loc>', sm)
           if not urls or any(not u.startswith('https://gnema.in') for u in urls): sys.exit('Invalid sitemap URLs')
           if 'Sitemap: https://gnema.in/sitemap.xml' not in rb: sys.exit('robots.txt sitemap declaration missing')
@@ -67,12 +65,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -q '^/\*$' _headers
-          grep -q '^  X-Content-Type-Options: nosniff$' _headers
-          grep -q '^  X-Frame-Options: DENY$' _headers
-          grep -q '^  Referrer-Policy: strict-origin-when-cross-origin$' _headers
-          grep -q '^  Strict-Transport-Security:' _headers
-          grep -q '^  Content-Security-Policy:' _headers
+          grep -q '^/\*$' public/_headers
+          grep -q '^  X-Content-Type-Options: nosniff$' public/_headers
+          grep -q '^  X-Frame-Options: DENY$' public/_headers
+          grep -q '^  Referrer-Policy: strict-origin-when-cross-origin$' public/_headers
+          grep -q '^  Strict-Transport-Security:' public/_headers
+          grep -q '^  Content-Security-Policy:' public/_headers
       - name: Check for accidental secrets
         shell: bash
         run: |

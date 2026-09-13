@@ -1,27 +1,31 @@
 # G-NeMa Final Website
 
-Static, Cloudflare Pages-ready website for **G-NeMa — Galactic Nexus of Machines**.
+Static, Cloudflare Workers Static Assets-ready website for **G-NeMa — Galactic Nexus of Machines**.
 
 ## Structure
-- `/` — corporate homepage
-- `/products/` — portfolio
-- `/products/titan.html` — TITAN
-- `/products/multi-agent-organization.html` — Multi-Agent Organization
-- `/products/causal-world-simulation.html` — Causal World Simulation
-- `/solutions/` — solutions
-- `/industries/` — industry positioning
-- `/research/` — research hub
-- `/about.html` — company
-- `/contact.html` — contact
-- `/assets/` — logo, favicon, CSS and JS
-- `robots.txt`, `sitemap.xml`, `404.html`
+- `/public/` — complete deployable website root
+- `/public/products/` — product portfolio
+- `/public/products/titan.html` — TITAN
+- `/public/products/multi-agent-organization.html` — Multi-Agent Organization
+- `/public/products/causal-world-simulation.html` — Causal World Simulation
+- `/public/solutions/` — solutions
+- `/public/industries/` — industry positioning
+- `/public/research/` — research hub
+- `/public/architecture/` — architecture overview
+- `/public/assessment/` — TITAN assessment
+- `/public/insights/` — insights
+- `/public/about.html` — company
+- `/public/contact.html` — contact
+- `/public/assets/` — logos, favicon, CSS, JS and media
+- `/public/_headers` — Cloudflare static asset security headers
+- `/public/robots.txt`, `/public/sitemap.xml`, `/public/404.html`
+- `/ops/` — CI, SEO and production validation tooling; not deployed as public assets
 
 ## Deployment
-Upload the contents of this folder to the `gnema-website` GitHub repository and deploy the repository as a static Cloudflare Pages site.
+Cloudflare Workers serves the contents of `/public/` as static assets. The repository root contains deployment configuration, CI workflows and operational tooling only.
 
 ## Notes
 The contact form uses a `mailto:` fallback so it does not pretend to have a backend. Replace it later with Cloudflare Workers, Formspree, or another approved form endpoint.
-
 
 ## Branding update
 - Official G-NeMa logo supplied by the owner is used consistently in all page headers and footers.

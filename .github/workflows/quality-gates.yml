@@ -31,15 +31,15 @@ jobs:
       - name: Validate repository structure
         run: |
           set -euo pipefail
-          for file in index.html robots.txt sitemap.xml _headers 404.html; do test -f "$file"; done
-          for dir in assets architecture products solutions industries research ops; do test -d "$dir"; done
+          for file in public/index.html public/robots.txt public/sitemap.xml public/_headers public/404.html; do test -f "$file"; done
+          for dir in public/assets public/architecture public/assessment public/products public/solutions public/industries public/research public/insights ops; do test -d "$dir"; done
       - name: Validate HTML metadata, local links and security policy
         run: python ops/quality_gates.py
       - name: Validate JavaScript syntax
         shell: bash
         run: |
           set -euo pipefail
-          while IFS= read -r -d '' file; do node --check "$file"; done < <(find . -type f -name '*.js' -not -path './.git/*' -print0)
+          while IFS= read -r -d '' file; do node --check "$file"; done < <(find public -type f -name '*.js' -print0)
       - name: Detect accidental secrets
         shell: bash
         run: |

@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SITE_ROOT = ROOT / "public"
 CONFIG_PATH = ROOT / "ops" / "config.json"
 
 
@@ -67,10 +68,10 @@ def audit_html(config):
     results = []
     required_meta = config["audit"]["required_meta"]
     excluded_pages = {"404.html", "products/titan.html"}
-    for path in sorted(ROOT.rglob("*.html")):
+    for path in sorted(SITE_ROOT.rglob("*.html")):
         if any(part in {".git", "node_modules"} for part in path.parts):
             continue
-        relative_path = str(path.relative_to(ROOT)).replace("\\", "/")
+        relative_path = str(path.relative_to(SITE_ROOT)).replace("\\", "/")
         if relative_path in excluded_pages:
             continue
         text = path.read_text(encoding="utf-8", errors="ignore")
@@ -89,7 +90,7 @@ def audit_html(config):
 
 
 def audit_sitemap(config):
-    sitemap = ROOT / "sitemap.xml"
+    sitemap = SITE_ROOT / "sitemap.xml"
     if not sitemap.exists(): return {"ok": False, "message": "sitemap.xml missing", "urls": []}
     text = sitemap.read_text(encoding="utf-8", errors="ignore")
     urls = re.findall(r"<loc>(.*?)</loc>", text)
@@ -99,7 +100,7 @@ def audit_sitemap(config):
 
 
 def audit_robots(config):
-    robots = ROOT / "robots.txt"
+    robots = SITE_ROOT / "robots.txt"
     if not robots.exists(): return {"ok": False, "message": "robots.txt missing"}
     text = robots.read_text(encoding="utf-8", errors="ignore")
     expected = config["site"]["url"].rstrip("/") + "/sitemap.xml"

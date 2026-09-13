@@ -6,7 +6,8 @@ from pathlib import Path
 from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(ROOT.rglob('*.html'))
+SITE_ROOT = ROOT / 'public'
+HTML_FILES = sorted(SITE_ROOT.rglob('*.html'))
 IGNORED = {'.git', 'node_modules'}
 
 class Parser(HTMLParser):
@@ -49,7 +50,7 @@ def clean_target(href: str) -> str:
 
 def resolve_local(path: Path, target: str) -> Path:
     if target.startswith('/'):
-        return (ROOT / target.lstrip('/')).resolve()
+        return (SITE_ROOT / target.lstrip('/')).resolve()
     return (path.parent / target).resolve()
 
 def is_local(href: str) -> bool:
@@ -59,7 +60,7 @@ def check_target(rel: str, path: Path, href: str, errors: list[str], kind: str =
     target = clean_target(href)
     if not target or not is_local(href): return
     target_path = resolve_local(path, target)
-    try: target_path.relative_to(ROOT)
+    try: target_path.relative_to(SITE_ROOT)
     except ValueError:
         errors.append(f'{rel}: {kind} escapes site root: {href}'); return
     if target_path.is_dir(): target_path /= 'index.html'
@@ -70,7 +71,7 @@ def main() -> int:
     warnings: list[str] = []
     for path in HTML_FILES:
         if any(part in IGNORED for part in path.parts): continue
-        p = Parser(); rel = path.relative_to(ROOT).as_posix()
+        p = Parser(); rel = path.relative_to(SITE_ROOT).as_posix()
         try: p.feed(path.read_text(encoding='utf-8'))
         except Exception as exc:
             errors.append(f'{rel}: invalid HTML encoding/parser error: {exc}'); continue
@@ -92,18 +93,18 @@ def main() -> int:
         for href in p.links: check_target(rel, path, href, errors, 'link')
         for src in p.resources: check_target(rel, path, src, errors, 'resource')
 
-    required_files = [ROOT/'sitemap.xml', ROOT/'robots.txt', ROOT/'_headers']
+    required_files = [SITE_ROOT/'sitemap.xml', SITE_ROOT/'robots.txt', SITE_ROOT/'_headers']
     for required_file in required_files:
-        if not required_file.exists(): errors.append(f'{required_file.relative_to(ROOT)}: required file missing')
-    if (ROOT/'sitemap.xml').exists():
-        sitemap = (ROOT/'sitemap.xml').read_text(encoding='utf-8')
+        if not required_file.exists(): errors.append(f'{required_file.relative_to(SITE_ROOT)}: required file missing')
+    if (SITE_ROOT/'sitemap.xml').exists():
+        sitemap = (SITE_ROOT/'sitemap.xml').read_text(encoding='utf-8')
         if 'https://gnema.in/' not in sitemap: errors.append('sitemap.xml: homepage missing')
         if re.search(r'<loc>[^<]+</loc>\s*<lastmod>[^<]*</lastmod>', sitemap) is None: warnings.append('sitemap.xml: verify lastmod format and freshness')
-    if (ROOT/'robots.txt').exists():
-        robots = (ROOT/'robots.txt').read_text(encoding='utf-8')
+    if (SITE_ROOT/'robots.txt').exists():
+        robots = (SITE_ROOT/'robots.txt').read_text(encoding='utf-8')
         if 'Sitemap: https://gnema.in/sitemap.xml' not in robots: errors.append('robots.txt: canonical Sitemap directive missing')
-    if (ROOT/'_headers').exists():
-        headers = (ROOT/'_headers').read_text(encoding='utf-8')
+    if (SITE_ROOT/'_headers').exists():
+        headers = (SITE_ROOT/'_headers').read_text(encoding='utf-8')
         required = ('X-Content-Type-Options:', 'X-Frame-Options:', 'Referrer-Policy:', 'Permissions-Policy:', 'Strict-Transport-Security:', 'Content-Security-Policy:')
         for name in required:
             if name not in headers: errors.append(f'_headers: missing {name}')
