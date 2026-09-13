@@ -1,0 +1,81 @@
+name: G-NeMa Production Quality Gates
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-quality:
+    name: Static quality gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate required production files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f index.html
+          test -f architecture/index.html
+          test -f assets/styles.css
+          test -f assets/app.js
+          test -f robots.txt
+          test -f sitemap.xml
+          test -f 404.html
+          test -f _headers
+      - name: Validate HTML structure and critical links
+        shell: python
+        run: |
+          import pathlib, re, sys
+          root = pathlib.Path('.')
+          failures=[]
+          for p in root.rglob('*.html'):
+              if any(x in {'.git','node_modules'} for x in p.parts): continue
+              s=p.read_text(encoding='utf-8',errors='ignore')
+              if '<!doctype html>' not in s.lower(): failures.append(f'{p}: missing doctype')
+              if '<html' not in s.lower() or '</html>' not in s.lower(): failures.append(f'{p}: malformed html root')
+              if '<title>' not in s.lower(): failures.append(f'{p}: missing title')
+              if 'rel="canonical"' not in s.lower(): failures.append(f'{p}: missing canonical')
+          home=(root/'index.html').read_text(encoding='utf-8',errors='ignore')
+          if '/architecture/' not in home: print('NOTICE: homepage Architecture link is progressively enhanced by app.js')
+          if failures:
+              print('\n'.join(failures)); sys.exit(1)
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check assets/app.js
+          node --check assets/lead-submission.js
+      - name: Validate sitemap and robots
+        shell: python
+        run: |
+          import pathlib, re, sys
+          sm=pathlib.Path('sitemap.xml').read_text(encoding='utf-8')
+          rb=pathlib.Path('robots.txt').read_text(encoding='utf-8')
+          urls=re.findall(r'<loc>(.*?)</loc>', sm)
+          if not urls or any(not u.startswith('https://gnema.in') for u in urls): sys.exit('Invalid sitemap URLs')
+          if 'Sitemap: https://gnema.in/sitemap.xml' not in rb: sys.exit('robots.txt sitemap declaration missing')
+          if 'https://gnema.in/architecture/' not in urls: sys.exit('Architecture URL missing from sitemap')
+      - name: Check security header policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q '^X-Content-Type-Options: nosniff' _headers
+          grep -q '^X-Frame-Options: DENY' _headers
+          grep -q '^Referrer-Policy: strict-origin-when-cross-origin' _headers
+          grep -q '^Strict-Transport-Security:' _headers
+      - name: Check for accidental secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '(AKIA[0-9A-Z]{16}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,})' --exclude-dir=.git .; then
+            echo 'Potential credential material detected.'
+            exit 1
+          fi
