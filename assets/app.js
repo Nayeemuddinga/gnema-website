@@ -1,42 +1,82 @@
 (() => {
   'use strict';
 
-  const year = document.getElementById('year');
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+  const year = $('#year');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const menu = document.querySelector('.menu');
-  const nav = document.querySelector('.nav');
+  const menu = $('.menu');
+  const nav = $('.nav');
   const navId = nav?.id || 'primary-navigation';
-  if (nav && !nav.id) nav.id = navId;
-  if (nav) nav.setAttribute('aria-label', nav.getAttribute('aria-label') || 'Primary navigation');
+  const mobileQuery = window.matchMedia('(max-width: 900px)');
+  const isMobile = () => mobileQuery.matches;
 
-  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
-  const setMenuState = (open) => {
-    if (!menu || !nav) return;
-    menu.setAttribute('aria-expanded', String(open));
-    menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-    nav.classList.toggle('is-open', open);
-    nav.style.display = isMobile() ? (open ? 'flex' : 'none') : '';
-    if (open) nav.querySelector('a')?.focus();
-  };
+  if (nav) {
+    nav.id = navId;
+    nav.setAttribute('aria-label', nav.getAttribute('aria-label') || 'Primary navigation');
+  }
 
   if (menu && nav) {
-    if (!menu.hasAttribute('aria-expanded')) menu.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-controls', navId);
+    menu.setAttribute('aria-expanded', menu.getAttribute('aria-expanded') || 'false');
+    menu.setAttribute('type', 'button');
+
+    const setMenuState = (open, returnFocus = false) => {
+      const mobile = isMobile();
+      menu.setAttribute('aria-expanded', String(open));
+      menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      nav.classList.toggle('is-open', open);
+      nav.style.display = mobile ? (open ? 'flex' : 'none') : '';
+      if (open && mobile) $('#primary-navigation a')?.focus();
+      if (returnFocus) menu.focus();
+    };
+
+    setMenuState(menu.getAttribute('aria-expanded') === 'true');
     menu.addEventListener('click', () => setMenuState(menu.getAttribute('aria-expanded') !== 'true'));
+
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
-        setMenuState(false);
-        menu.focus();
+        setMenuState(false, true);
       }
     });
+
     document.addEventListener('click', (event) => {
-      if (isMobile() && menu.getAttribute('aria-expanded') === 'true' && !nav.contains(event.target) && !menu.contains(event.target)) setMenuState(false);
+      if (isMobile() && menu.getAttribute('aria-expanded') === 'true' && !nav.contains(event.target) && !menu.contains(event.target)) {
+        setMenuState(false);
+      }
     });
+
     nav.addEventListener('click', (event) => {
       if (event.target.closest('a') && isMobile()) setMenuState(false);
     });
-    window.addEventListener('resize', () => { if (!isMobile()) setMenuState(false); });
+
+    const syncMenu = () => setMenuState(false);
+    if (mobileQuery.addEventListener) mobileQuery.addEventListener('change', syncMenu);
+    else mobileQuery.addListener(syncMenu);
   }
+
+  // Remove placeholder social destinations instead of sending visitors to generic platforms.
+  const placeholderSocialHosts = new Set([
+    'https://www.youtube.com/', 'https://x.com/', 'https://www.instagram.com/', 'https://www.facebook.com/', 'https://www.gnema.in/'
+  ]);
+  $$('a[href]').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (placeholderSocialHosts.has(href)) {
+      const item = link.closest('.social-item');
+      if (item) item.remove(); else link.remove();
+    }
+  });
+
+  // Progressive image performance: defer non-critical images without requiring a build step.
+  const images = $$('img');
+  images.forEach((img, index) => {
+    img.decoding = img.decoding || 'async';
+    if (index > 0 && !img.loading) img.loading = 'lazy';
+  });
+  const firstContentImage = images.find((img) => !img.closest('header, footer'));
+  if (firstContentImage) firstContentImage.loading = 'eager';
 
   document.querySelectorAll('[data-contact]').forEach((a) => a.addEventListener('click', () => { location.href = '/contact.html'; }));
 
@@ -49,11 +89,11 @@
     }
   };
 
-  document.querySelectorAll('[data-track]').forEach((el) => el.addEventListener('click', () => {
+  $$('[data-track]').forEach((el) => el.addEventListener('click', () => {
     window.gnemaAnalytics.track(el.dataset.track, { href: el.getAttribute('href') || '' });
   }));
 
-  document.querySelectorAll('form').forEach((form) => form.addEventListener('submit', () => {
+  $$('form').forEach((form) => form.addEventListener('submit', () => {
     const path = location.pathname;
     const type = path.includes('/assessment/') ? 'titan_assessment_submit' : path.includes('contact') ? 'contact_submit' : 'form_submit';
     window.gnemaAnalytics.track(type, { form_action: form.getAttribute('action') || '' });
@@ -62,7 +102,7 @@
   // Progressive enhancement for legacy homepage markup.
   if (location.pathname === '/' || location.pathname === '/index.html') {
     if (nav && !nav.querySelector('a[href="/architecture/"]')) {
-      const researchLink = Array.from(nav.querySelectorAll('a')).find((a) => a.getAttribute('href') === 'research/index.html');
+      const researchLink = $$("a", nav).find((a) => a.getAttribute('href') === 'research/index.html');
       const architectureLink = document.createElement('a');
       architectureLink.href = '/architecture/';
       architectureLink.textContent = 'Architecture';
@@ -70,7 +110,7 @@
       if (researchLink) researchLink.insertAdjacentElement('afterend', architectureLink);
       else nav.insertBefore(architectureLink, nav.querySelector('.btn') || null);
     }
-    const actions = document.querySelector('.hero .actions');
+    const actions = $('.hero .actions');
     if (actions && !actions.querySelector('a[href="/architecture/"]')) {
       const architectureCta = document.createElement('a');
       architectureCta.className = 'btn btn-dark';
