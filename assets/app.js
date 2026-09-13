@@ -1,32 +1,72 @@
-document.getElementById('year')?.appendChild(document.createTextNode(new Date().getFullYear()));
-const menu=document.querySelector('.menu'), nav=document.querySelector('.nav');
-menu?.addEventListener('click',()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.position='absolute';nav.style.top='72px';nav.style.left='14px';nav.style.right='14px';nav.style.padding='18px';nav.style.background='#fff';nav.style.border='1px solid #dfe3df';nav.style.borderRadius='14px';nav.style.flexDirection='column';nav.style.zIndex='20'});
-document.querySelectorAll('[data-contact]').forEach(a=>a.addEventListener('click',()=>{location.href='/contact.html'}));
+(() => {
+  'use strict';
 
-// Provider-neutral conversion events. No analytics vendor or tracking ID is hard-coded.
-window.gnemaAnalytics=window.gnemaAnalytics||{track(name,data={}){const event={event:name,...data,page:location.pathname,ts:new Date().toISOString()};window.dataLayer=window.dataLayer||[];window.dataLayer.push(event);window.dispatchEvent(new CustomEvent('gnema:conversion',{detail:event}));}};
-document.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>window.gnemaAnalytics.track(el.dataset.track,{href:el.getAttribute('href')||''})));
-document.querySelectorAll('form').forEach(form=>form.addEventListener('submit',()=>{const path=location.pathname;const type=path.includes('/assessment/')?'titan_assessment_submit':path.includes('contact')?'contact_submit':'form_submit';window.gnemaAnalytics.track(type,{form_action:form.getAttribute('action')||''});}));
+  const year = document.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
 
-// Homepage navigation: expose the production intelligence architecture prominently.
-if((location.pathname==='/'||location.pathname==='/index.html')&&nav&&!nav.querySelector('a[href="/architecture/"]')){
-  const researchLink=Array.from(nav.querySelectorAll('a')).find(a=>a.getAttribute('href')==='research/index.html');
-  const architectureLink=document.createElement('a');
-  architectureLink.href='/architecture/';
-  architectureLink.textContent='Architecture';
-  architectureLink.dataset.track='header_architecture';
-  if(researchLink) researchLink.insertAdjacentElement('afterend',architectureLink); else nav.insertBefore(architectureLink,nav.querySelector('.btn')||null);
-}
+  const menu = document.querySelector('.menu');
+  const nav = document.querySelector('.nav');
+  const navId = nav?.id || 'primary-navigation';
+  if (nav && !nav.id) nav.id = navId;
+  if (nav) nav.setAttribute('aria-label', nav.getAttribute('aria-label') || 'Primary navigation');
 
-// Homepage hero: add a prominent path to the production intelligence architecture.
-if(location.pathname==='/'||location.pathname==='/index.html'){
-  const actions=document.querySelector('.hero .actions');
-  if(actions&&!actions.querySelector('a[href="/architecture/"]')){
-    const architectureCta=document.createElement('a');
-    architectureCta.className='btn btn-dark';
-    architectureCta.href='/architecture/';
-    architectureCta.textContent='Explore the Intelligence Architecture →';
-    architectureCta.dataset.track='hero_architecture';
-    actions.appendChild(architectureCta);
+  const setMenuState = (open) => {
+    if (!menu || !nav) return;
+    menu.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    nav.classList.toggle('is-open', open);
+    if (window.matchMedia('(max-width: 900px)').matches) nav.style.display = open ? 'flex' : 'none';
+    else nav.style.display = '';
+  };
+
+  menu?.addEventListener('click', () => setMenuState(menu.getAttribute('aria-expanded') !== 'true'));
+  menu?.addEventListener('keydown', (event) => { if (event.key === 'Escape') { setMenuState(false); menu.focus(); } });
+  nav?.addEventListener('click', (event) => {
+    if (event.target.closest('a') && window.matchMedia('(max-width: 900px)').matches) setMenuState(false);
+  });
+  window.addEventListener('resize', () => { if (!window.matchMedia('(max-width: 900px)').matches) setMenuState(false); });
+
+  document.querySelectorAll('[data-contact]').forEach((a) => a.addEventListener('click', () => { location.href = '/contact.html'; }));
+
+  window.gnemaAnalytics = window.gnemaAnalytics || {
+    track(name, data = {}) {
+      const event = { event: name, ...data, page: location.pathname, ts: new Date().toISOString() };
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(event);
+      window.dispatchEvent(new CustomEvent('gnema:conversion', { detail: event }));
+    }
+  };
+
+  document.querySelectorAll('[data-track]').forEach((el) => el.addEventListener('click', () => {
+    window.gnemaAnalytics.track(el.dataset.track, { href: el.getAttribute('href') || '' });
+  }));
+
+  document.querySelectorAll('form').forEach((form) => form.addEventListener('submit', () => {
+    const path = location.pathname;
+    const type = path.includes('/assessment/') ? 'titan_assessment_submit' : path.includes('contact') ? 'contact_submit' : 'form_submit';
+    window.gnemaAnalytics.track(type, { form_action: form.getAttribute('action') || '' });
+  }));
+
+  // Progressive enhancement only: critical navigation and CTAs live in HTML.
+  // Legacy homepage builds that lack Architecture links are upgraded here.
+  if (location.pathname === '/' || location.pathname === '/index.html') {
+    if (nav && !nav.querySelector('a[href="/architecture/"]')) {
+      const researchLink = Array.from(nav.querySelectorAll('a')).find((a) => a.getAttribute('href') === 'research/index.html');
+      const architectureLink = document.createElement('a');
+      architectureLink.href = '/architecture/';
+      architectureLink.textContent = 'Architecture';
+      architectureLink.dataset.track = 'header_architecture';
+      if (researchLink) researchLink.insertAdjacentElement('afterend', architectureLink);
+      else nav.insertBefore(architectureLink, nav.querySelector('.btn') || null);
+    }
+    const actions = document.querySelector('.hero .actions');
+    if (actions && !actions.querySelector('a[href="/architecture/"]')) {
+      const architectureCta = document.createElement('a');
+      architectureCta.className = 'btn btn-dark';
+      architectureCta.href = '/architecture/';
+      architectureCta.textContent = 'Explore the Intelligence Architecture →';
+      architectureCta.dataset.track = 'hero_architecture';
+      actions.appendChild(architectureCta);
+    }
   }
-}
+})();
