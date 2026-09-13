@@ -24,39 +24,27 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-
       - name: Validate repository structure
         run: |
-          test -f index.html
-          test -f robots.txt
-          test -f sitemap.xml
-          test -f _headers
-          test -f 404.html
-          test -d assets
-          test -d architecture
-
-      - name: Validate HTML metadata and links
+          set -euo pipefail
+          for file in index.html robots.txt sitemap.xml _headers 404.html; do test -f "$file"; done
+          for dir in assets architecture products solutions industries research ops; do test -d "$dir"; done
+      - name: Validate HTML metadata, local links and security policy
         run: python ops/quality_gates.py
-
       - name: Validate JavaScript syntax
         shell: bash
         run: |
           set -euo pipefail
-          while IFS= read -r -d '' file; do
-            node --check "$file"
-          done < <(find . -type f -name '*.js' -not -path './.git/*' -print0)
-
+          while IFS= read -r -d '' file; do node --check "$file"; done < <(find . -type f -name '*.js' -not -path './.git/*' -print0)
       - name: Detect accidental secrets
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE --exclude-dir=.git --exclude='*.md' --exclude='sitemap.xml' \
-            '(AKIA[0-9A-Z]{16}|-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----|ghp_[A-Za-z0-9_]{30,}|sk-[A-Za-z0-9]{20,})' .; then
+          if grep -RInE --exclude-dir=.git --exclude='*.md' --exclude='sitemap.xml' '(AKIA[0-9A-Z]{16}|-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----|ghp_[A-Za-z0-9_]{30,}|sk-[A-Za-z0-9]{20,})' .; then
             echo 'Potential credential material detected.'
             exit 1
           fi
@@ -87,3 +75,21 @@ jobs:
           path: ops/reports/
           if-no-files-found: warn
           retention-days: 14
+
+  production-smoke:
+    name: Production Smoke Tests
+    needs: static-quality
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Verify public deployment
+        run: python ops/production_smoke.py
