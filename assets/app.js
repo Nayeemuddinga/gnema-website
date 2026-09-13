@@ -17,3 +17,16 @@ if((location.pathname==='/'||location.pathname==='/index.html')&&nav&&!nav.query
   architectureLink.dataset.track='header_architecture';
   if(researchLink) researchLink.insertAdjacentElement('afterend',architectureLink); else nav.insertBefore(architectureLink,nav.querySelector('.btn')||null);
 }
+
+// Homepage hero: add a prominent path to the production intelligence architecture.
+if(location.pathname==='/'||location.pathname==='/index.html'){
+  const actions=document.querySelector('.hero .actions');
+  if(actions&&!actions.querySelector('a[href="/architecture/"]')){
+    const architectureCta=document.createElement('a');
+    architectureCta.className='btn btn-dark';
+    architectureCta.href='/architecture/';
+    architectureCta.textContent='Explore the Intelligence Architecture →';
+    architectureCta.dataset.track='hero_architecture';
+    actions.appendChild(architectureCta);
+  }
+}
