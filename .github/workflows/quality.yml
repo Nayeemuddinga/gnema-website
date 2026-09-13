@@ -67,10 +67,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -q '^X-Content-Type-Options: nosniff' _headers
-          grep -q '^X-Frame-Options: DENY' _headers
-          grep -q '^Referrer-Policy: strict-origin-when-cross-origin' _headers
-          grep -q '^Strict-Transport-Security:' _headers
+          grep -q '^/\*$' _headers
+          grep -q '^  X-Content-Type-Options: nosniff$' _headers
+          grep -q '^  X-Frame-Options: DENY$' _headers
+          grep -q '^  Referrer-Policy: strict-origin-when-cross-origin$' _headers
+          grep -q '^  Strict-Transport-Security:' _headers
+          grep -q '^  Content-Security-Policy:' _headers
       - name: Check for accidental secrets
         shell: bash
         run: |
