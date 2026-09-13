@@ -1,24 +1,43 @@
 /*
-  G-NeMa security headers.
-  Cloudflare Workers _headers syntax: a path rule must precede its headers.
+  G-NeMa security headers for Cloudflare Workers static assets.
 */
 
 /*
-  Apply these headers to every static asset response.
+  Apply to every URL. Cloudflare requires the path rule first, then indented
+  header declarations. Keep the file intentionally minimal for parser safety.
 */
 /*
-  Cloudflare uses the first non-comment line as the path pattern, so this
-  block must be written as a rule rather than as a header declaration.
+  See Cloudflare Workers Static Assets _headers documentation.
 */
-/* The next line is the required global path rule. */
+
+/* The global URL pattern */
 /*
-  Keep comments here for documentation; header lines follow the / rule.
+  Security headers
 */
+
 /*
-  Security policy applies to the entire static site.
+  NOTE: comments are permitted only as standalone comment lines.
 */
+
+/* Global rule */
 /*
-  Do not remove the / rule below.
+  The next line is the URL pattern.
+*/
+
+/*
+  End documentation.
+*/
+
+/*
+  Begin global header rule.
+*/
+
+/*
+  URL pattern:
+*/
+
+/*
+  / applies to all paths.
 */
 
 /
@@ -27,4 +46,4 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https:; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https:; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https:; img-src 'self' data: https:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https:; upgrade-insecure-requests
