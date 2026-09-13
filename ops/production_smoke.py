@@ -11,6 +11,9 @@ BASE = "https://gnema.in"
 PAGES = ["/", "/architecture/", "/products/", "/solutions/", "/industries/", "/research/", "/about.html", "/contact.html", "/pricing.html", "/privacy.html", "/terms.html", "/assessment/titan.html", "/404.html"]
 REPORTED_HEADERS = [
     "X-GNeMa-Worker",
+    "X-GNeMa-Diag-A",
+    "X-GNeMa-Diag-B",
+    "X-GNeMa-Diag-C",
     "X-Content-Type-Options",
     "X-Frame-Options",
     "Referrer-Policy",
@@ -37,7 +40,7 @@ def main() -> int:
     for path in PAGES:
         status, headers, body = fetch(path)
         print(f"{path}: HTTP status={status}")
-        print(f"{path}: response security headers:")
+        print(f"{path}: response headers under diagnostic/security inspection:")
         for name in REPORTED_HEADERS:
             print(f"{path}: {name}={headers.get(name)!r}")
         if status != 200:
