@@ -7,3 +7,13 @@ document.querySelectorAll('[data-contact]').forEach(a=>a.addEventListener('click
 window.gnemaAnalytics=window.gnemaAnalytics||{track(name,data={}){const event={event:name,...data,page:location.pathname,ts:new Date().toISOString()};window.dataLayer=window.dataLayer||[];window.dataLayer.push(event);window.dispatchEvent(new CustomEvent('gnema:conversion',{detail:event}));}};
 document.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>window.gnemaAnalytics.track(el.dataset.track,{href:el.getAttribute('href')||''})));
 document.querySelectorAll('form').forEach(form=>form.addEventListener('submit',()=>{const path=location.pathname;const type=path.includes('/assessment/')?'titan_assessment_submit':path.includes('contact')?'contact_submit':'form_submit';window.gnemaAnalytics.track(type,{form_action:form.getAttribute('action')||''});}));
+
+// Homepage navigation: expose the production intelligence architecture prominently.
+if((location.pathname==='/'||location.pathname==='/index.html')&&nav&&!nav.querySelector('a[href="/architecture/"]')){
+  const researchLink=Array.from(nav.querySelectorAll('a')).find(a=>a.getAttribute('href')==='research/index.html');
+  const architectureLink=document.createElement('a');
+  architectureLink.href='/architecture/';
+  architectureLink.textContent='Architecture';
+  architectureLink.dataset.track='header_architecture';
+  if(researchLink) researchLink.insertAdjacentElement('afterend',architectureLink); else nav.insertBefore(architectureLink,nav.querySelector('.btn')||null);
+}
