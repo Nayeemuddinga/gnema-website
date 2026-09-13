@@ -36,12 +36,14 @@ def main() -> int:
             canonical = re.search(r'<link\b[^>]*rel=[\"\']canonical[\"\'][^>]*href=[\"\']([^\"\']+)', body, re.I | re.S)
             if not canonical or not canonical.group(1).startswith(BASE + "/"):
                 failures.append(f"{path}: missing/invalid canonical")
-        required_headers = ["X-GNeMa-Worker", "X-Content-Type-Options", "X-Frame-Options", "Referrer-Policy", "Permissions-Policy", "Strict-Transport-Security"]
+        worker_header = headers.get("X-GNeMa-Worker")
+        print(f"{path}: X-GNeMa-Worker={worker_header!r}")
+        if worker_header != "active":
+            failures.append(f"{path}: Worker diagnostic header is not active (got {worker_header!r})")
+        required_headers = ["X-Content-Type-Options", "X-Frame-Options", "Referrer-Policy", "Permissions-Policy", "Strict-Transport-Security"]
         for name in required_headers:
             if name not in headers:
                 failures.append(f"{path}: missing response header {name}")
-        if headers.get("X-GNeMa-Worker") != "active":
-            failures.append(f"{path}: Worker diagnostic header is not active")
         if path == "/" and "G-NeMa" not in body:
             failures.append("/: homepage content marker missing")
         if path == "/architecture/" and "The Architecture" not in body:
