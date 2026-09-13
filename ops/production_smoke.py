@@ -9,6 +9,15 @@ from urllib.error import HTTPError, URLError
 
 BASE = "https://gnema.in"
 PAGES = ["/", "/architecture/", "/products/", "/solutions/", "/industries/", "/research/", "/about.html", "/contact.html", "/pricing.html", "/privacy.html", "/terms.html", "/assessment/titan.html", "/404.html"]
+REPORTED_HEADERS = [
+    "X-GNeMa-Worker",
+    "X-Content-Type-Options",
+    "X-Frame-Options",
+    "Referrer-Policy",
+    "Permissions-Policy",
+    "Strict-Transport-Security",
+    "Content-Security-Policy",
+]
 
 
 def fetch(path: str):
@@ -27,6 +36,10 @@ def main() -> int:
     failures = []
     for path in PAGES:
         status, headers, body = fetch(path)
+        print(f"{path}: HTTP status={status}")
+        print(f"{path}: response security headers:")
+        for name in REPORTED_HEADERS:
+            print(f"{path}: {name}={headers.get(name)!r}")
         if status != 200:
             failures.append(f"{path}: expected HTTP 200, got {status}")
             continue
@@ -37,7 +50,6 @@ def main() -> int:
             if not canonical or not canonical.group(1).startswith(BASE + "/"):
                 failures.append(f"{path}: missing/invalid canonical")
         worker_header = headers.get("X-GNeMa-Worker")
-        print(f"{path}: X-GNeMa-Worker={worker_header!r}")
         if worker_header != "active":
             failures.append(f"{path}: Worker diagnostic header is not active (got {worker_header!r})")
         required_headers = ["X-Content-Type-Options", "X-Frame-Options", "Referrer-Policy", "Permissions-Policy", "Strict-Transport-Security"]
