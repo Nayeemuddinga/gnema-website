@@ -9,6 +9,7 @@ from urllib.error import HTTPError, URLError
 
 BASE = "https://gnema.in"
 PAGES = ["/", "/architecture/", "/products/", "/solutions/", "/industries/", "/research/", "/about.html", "/contact.html", "/pricing.html", "/privacy.html", "/terms.html", "/assessment/titan.html", "/404.html"]
+HEADER_TEST = "/__header-test"
 REPORTED_HEADERS = [
     "X-GNeMa-Worker",
     "X-GNeMa-Diag-A",
@@ -35,14 +36,18 @@ def fetch(path: str):
         return None, {}, str(exc)
 
 
+def report_headers(path: str, headers: dict[str, str]) -> None:
+    print(f"{path}: response headers under diagnostic/security inspection:")
+    for name in REPORTED_HEADERS:
+        print(f"{path}: {name}={headers.get(name)!r}")
+
+
 def main() -> int:
     failures = []
     for path in PAGES:
         status, headers, body = fetch(path)
         print(f"{path}: HTTP status={status}")
-        print(f"{path}: response headers under diagnostic/security inspection:")
-        for name in REPORTED_HEADERS:
-            print(f"{path}: {name}={headers.get(name)!r}")
+        report_headers(path, headers)
         if status != 200:
             failures.append(f"{path}: expected HTTP 200, got {status}")
             continue
@@ -63,12 +68,26 @@ def main() -> int:
             failures.append("/: homepage content marker missing")
         if path == "/architecture/" and "The Architecture" not in body:
             failures.append("/architecture/: architecture content marker missing")
+
+    # Synthetic response test: bypass ASSETS.fetch() entirely. This isolates
+    # post-Worker/edge response processing from the static-assets pipeline.
+    status, headers, body = fetch(HEADER_TEST)
+    print(f"{HEADER_TEST}: HTTP status={status}")
+    report_headers(HEADER_TEST, headers)
+    if status != 200:
+        failures.append(f"{HEADER_TEST}: expected HTTP 200, got {status}")
+    elif "G-NeMa header isolation test" not in body:
+        failures.append(f"{HEADER_TEST}: synthetic Worker response marker missing")
+    for name in REPORTED_HEADERS:
+        if name not in headers:
+            failures.append(f"{HEADER_TEST}: synthetic response missing header {name}")
+
     if failures:
         print("PRODUCTION SMOKE: FAIL")
         for failure in failures:
             print("ERROR:", failure)
         return 1
-    print(f"PRODUCTION SMOKE: PASS — {len(PAGES)} public endpoints verified with Worker execution.")
+    print(f"PRODUCTION SMOKE: PASS — {len(PAGES)} public endpoints plus synthetic Worker header isolation verified.")
     return 0
 
 
