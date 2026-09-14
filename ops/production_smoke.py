@@ -9,7 +9,6 @@ from urllib.error import HTTPError, URLError
 
 BASE = "https://gnema.in"
 PAGES = ["/", "/architecture/", "/products/", "/solutions/", "/industries/", "/research/", "/about.html", "/contact.html", "/pricing.html", "/privacy.html", "/terms.html", "/assessment/titan.html", "/404.html"]
-HEADER_TEST = "/__header-test"
 REPORTED_HEADERS = [
     "X-GNeMa-Worker",
     "X-GNeMa-Diag-A",
@@ -59,8 +58,8 @@ def main() -> int:
                 failures.append(f"{path}: missing/invalid canonical")
         worker_header = headers.get("X-GNeMa-Worker")
         if worker_header != "active":
-            failures.append(f"{path}: Worker diagnostic header is not active (got {worker_header!r})")
-        required_headers = ["X-Content-Type-Options", "X-Frame-Options", "Referrer-Policy", "Permissions-Policy", "Strict-Transport-Security"]
+            failures.append(f"{path}: static security header marker is not active (got {worker_header!r})")
+        required_headers = ["X-Content-Type-Options", "X-Frame-Options", "Referrer-Policy", "Permissions-Policy", "Strict-Transport-Security", "Content-Security-Policy"]
         for name in required_headers:
             if name not in headers:
                 failures.append(f"{path}: missing response header {name}")
@@ -69,25 +68,12 @@ def main() -> int:
         if path == "/architecture/" and "The Architecture" not in body:
             failures.append("/architecture/: architecture content marker missing")
 
-    # Synthetic response test: bypass ASSETS.fetch() entirely. This isolates
-    # post-Worker/edge response processing from the static-assets pipeline.
-    status, headers, body = fetch(HEADER_TEST)
-    print(f"{HEADER_TEST}: HTTP status={status}")
-    report_headers(HEADER_TEST, headers)
-    if status != 200:
-        failures.append(f"{HEADER_TEST}: expected HTTP 200, got {status}")
-    elif "G-NeMa header isolation test" not in body:
-        failures.append(f"{HEADER_TEST}: synthetic Worker response marker missing")
-    for name in REPORTED_HEADERS:
-        if name not in headers:
-            failures.append(f"{HEADER_TEST}: synthetic response missing header {name}")
-
     if failures:
         print("PRODUCTION SMOKE: FAIL")
         for failure in failures:
             print("ERROR:", failure)
         return 1
-    print(f"PRODUCTION SMOKE: PASS — {len(PAGES)} public endpoints plus synthetic Worker header isolation verified.")
+    print(f"PRODUCTION SMOKE: PASS — {len(PAGES)} public endpoints and static security header policy verified.")
     return 0
 
 
