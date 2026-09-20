@@ -101,4 +101,122 @@
       const architectureCta = document.createElement('a'); architectureCta.className = 'btn btn-dark'; architectureCta.href = '/architecture/'; architectureCta.textContent = 'Explore the Intelligence Architecture →'; architectureCta.dataset.track = 'hero_architecture'; actions.appendChild(architectureCta);
     }
   }
+
+  // Intelligent navigation layer: fast site search, active route, reveal, and low-cost performance telemetry.
+  const main = $('main');
+  if (main) {
+    main.id = main.id || 'main-content';
+    if (!document.querySelector('.skip-link')) {
+      const skip = document.createElement('a');
+      skip.className = 'skip-link'; skip.href = '#main-content'; skip.textContent = 'Skip to main content';
+      document.body.prepend(skip);
+    }
+  }
+
+  if (nav) {
+    const current = location.pathname.replace(/\\/$/, '') || '/';
+    $('a[href]', nav).forEach((link) => {
+      const raw = link.getAttribute('href') || '';
+      if (!raw || raw.startsWith('#') || raw.startsWith('http')) return;
+      const target = new URL(raw, location.href).pathname.replace(/\\/$/, '') || '/';
+      if (target === current) link.setAttribute('aria-current', 'page');
+    });
+  }
+
+  const siteIndex = [
+    ['G-NeMa Home','Enterprise AI, autonomous agents and intelligent systems','/'],
+    ['Products','TITAN, Multi-Agent Organization, Causal World Simulation and product portfolio','/products/'],
+    ['TITAN','Autonomous Database Intelligence and Protection','/products/titan/'],
+    ['Multi-Agent Organization','Coordinated AI agents for enterprise operations','/products/multi-agent-organization.html'],
+    ['Causal World Simulation','Causal reasoning, simulation and scenario intelligence','/products/causal-world-simulation.html'],
+    ['BankAI Nexus','Secure and scalable banking architecture','/products/bankai-nexus.html'],
+    ['Enterprise AI Operating Layer','Governed multi-agent enterprise infrastructure','/products/enterprise-ai-operating-layer.html'],
+    ['Knowledge Distillation & SFT','Smaller, efficient and enterprise-ready AI models','/products/knowledge-distillation.html'],
+    ['Solutions','Enterprise AI, automation, data and intelligent operations','/solutions/'],
+    ['Industries','Industry-specific intelligent systems','/industries/'],
+    ['Research','G-NeMa research and architecture thinking','/research/'],
+    ['Beyond AI','Autonomous intelligence, quantum, BCI, synthetic biology and frontier research','/beyond-ai.html'],
+    ['Autonomous Intelligence','Goal-driven agents, planning, execution and adaptation','/beyond/autonomous-intelligence.html'],
+    ['Agency Economy','Multi-agent coordination and machine-mediated workflows','/beyond/agency-economy.html'],
+    ['Quantum Computing','Quantum-classical computation and error correction','/beyond/quantum-computing.html'],
+    ['Neuromorphic Computing','Event-driven and brain-inspired computing','/beyond/neuromorphic-computing.html'],
+    ['Brain-Computer Interfaces','Neural interfaces, decoding and human-machine interaction','/beyond/brain-computer-interfaces.html'],
+    ['Cognitive Augmentation','Human-AI complementarity and decision support','/beyond/cognitive-augmentation.html'],
+    ['Synthetic Biology','AI-assisted biological design and autonomous experimentation','/beyond/synthetic-biology.html'],
+    ['DNA Data Storage','Molecular information storage and retrieval','/beyond/dna-data-storage.html'],
+    ['Bioconvergence','AI, biology, materials, nanotechnology and robotics','/beyond/bioconvergence.html'],
+    ['Engagement','Assessment, pilot, managed and enterprise engagement models','/pricing.html'],
+    ['About G-NeMa','Company, mission and operating model','/about.html'],
+    ['Contact G-NeMa','Start a conversation with G-NeMa','/contact.html']
+  ];
+
+  const searchOpen = () => {
+    if ($('.search-layer')) return;
+    const layer = document.createElement('div');
+    layer.className = 'search-layer';
+    layer.innerHTML = '<div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search G-NeMa"><div class="search-head"><span aria-hidden="true">⌕</span><input class="search-input" type="search" autocomplete="off" placeholder="Search G-NeMa..." aria-label="Search G-NeMa"><button class="search-close" type="button" aria-label="Close search">×</button></div><div class="search-results"></div></div>';
+    document.body.appendChild(layer);
+    const input = $('.search-input', layer), results = $('.search-results', layer);
+    const render = (q='') => {
+      const terms = q.toLowerCase().trim().split(/\\s+/).filter(Boolean);
+      const ranked = siteIndex.map((item, i) => {
+        const hay = item.join(' ').toLowerCase();
+        let score = terms.reduce((s,t) => s + (hay.includes(t) ? (item[0].toLowerCase().startsWith(t) ? 5 : 2) : 0), 0);
+        return {item,i,score};
+      }).filter(x => !terms.length || x.score > 0).sort((a,b)=>b.score-a.score || a.i-b.i).slice(0,10);
+      results.innerHTML = ranked.length ? ranked.map(x => '<a class="search-result" href="'+x.item[2]+'"><strong>'+x.item[0]+'</strong><span>'+x.item[1]+'</span></a>').join('') : '<div class="search-empty">No matching G-NeMa destination found.</div>';
+    };
+    const close = () => { layer.remove(); };
+    render();
+    input.focus();
+    input.addEventListener('input', () => render(input.value));
+    layer.addEventListener('click', e => { if(e.target === layer || e.target.closest('.search-close')) close(); });
+    input.addEventListener('keydown', e => { if(e.key === 'Escape') close(); if(e.key === 'Enter'){ const first=$('.search-result',layer); if(first) location.href=first.href; }});
+  };
+
+  if (nav && !$('.site-search-trigger')) {
+    const trigger = document.createElement('button');
+    trigger.className='site-search-trigger'; trigger.type='button'; trigger.setAttribute('aria-label','Search G-NeMa');
+    trigger.innerHTML='Search <kbd>⌘K</kbd>';
+    trigger.addEventListener('click', searchOpen);
+    nav.insertBefore(trigger, nav.querySelector('.btn') || null);
+  }
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase()==='k') { e.preventDefault(); searchOpen(); }
+  });
+
+  const revealTargets = $('.section,.page-hero,.dossier,.papers,.cta,.global,.poster-feature,.content-block,.card');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealTargets.forEach((el,i)=>{ if(i>1) el.classList.add('reveal'); });
+    const io = new IntersectionObserver(entries => entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    }), {rootMargin:'0px 0px -8% 0px',threshold:.08});
+    $('.reveal').forEach(el=>io.observe(el));
+  }
+
+  if (!$('.to-top')) {
+    const top = document.createElement('button');
+    top.className='to-top'; top.type='button'; top.setAttribute('aria-label','Back to top'); top.textContent='↑';
+    top.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    document.body.appendChild(top);
+    const syncTop=()=>top.classList.toggle('is-visible',window.scrollY>700);
+    window.addEventListener('scroll',syncTop,{passive:true}); syncTop();
+  }
+
+  // Measure Core Web Vitals when supported; keep telemetry local to the existing dataLayer.
+  const vitals = {};
+  const reportVitals = () => {
+    const navEntry = performance.getEntriesByType('navigation')[0];
+    if (navEntry) vitals.ttfb = Math.round(navEntry.responseStart);
+    if (window.gnemaAnalytics && Object.keys(vitals).length) window.gnemaAnalytics.track('performance_snapshot', vitals);
+  };
+  if ('PerformanceObserver' in window) {
+    try {
+      new PerformanceObserver(list => { const e=list.getEntries().at(-1); if(e) vitals.lcp=Math.round(e.startTime); }).observe({type:'largest-contentful-paint',buffered:true});
+      new PerformanceObserver(list => { vitals.cls=Number(list.getEntries().reduce((s,e)=>s+(e.hadRecentInput?0:e.value),0).toFixed(4)); }).observe({type:'layout-shift',buffered:true});
+      new PerformanceObserver(list => { const e=list.getEntries().at(-1); if(e) vitals.inp=Math.round(e.duration); }).observe({type:'event',buffered:true,durationThreshold:40});
+    } catch (_) {}
+  }
+  window.addEventListener('load', () => setTimeout(reportVitals, 0), {once:true});
+
 })();
