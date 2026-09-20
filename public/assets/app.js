@@ -30,11 +30,15 @@
 
     const setMenuState = (open, returnFocus = false) => {
       const mobile = isMobile();
-      menu.setAttribute('aria-expanded', String(open));
-      menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-      nav.classList.toggle('is-open', open);
-      nav.style.display = mobile ? (open ? 'flex' : 'none') : '';
-      if (open && mobile) $('#primary-navigation a')?.focus();
+      const nextOpen = Boolean(open && mobile);
+      menu.setAttribute('aria-expanded', String(nextOpen));
+      menu.setAttribute('aria-label', nextOpen ? 'Close navigation' : 'Open navigation');
+      menu.setAttribute('aria-controls', navId);
+      nav.classList.toggle('is-open', nextOpen);
+      nav.style.display = mobile ? (nextOpen ? 'flex' : 'none') : '';
+      document.documentElement.classList.toggle('nav-open', nextOpen);
+      document.body.classList.toggle('nav-open', nextOpen);
+      if (nextOpen && mobile) requestAnimationFrame(() => $('#primary-navigation a')?.focus());
       if (returnFocus) menu.focus();
     };
 
