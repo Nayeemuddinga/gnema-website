@@ -1,0 +1,49 @@
+# G-NeMa
+
+> G-NeMa (Galactic Nexus of Machines) is an AI technology and intelligent-systems venture building enterprise AI products, autonomous agents, data intelligence, automation and frontier systems.
+
+## Canonical identity
+
+- Name: G-NeMa
+- Expanded name: Galactic Nexus of Machines
+- Website: https://gnema.in/
+- LinkedIn: https://www.linkedin.com/company/g-nema/
+- Founder: G. A. Nayeemuddin
+- Founder profile: https://www.linkedin.com/in/naeemuddinga/
+
+## What G-NeMa does
+
+G-NeMa designs and builds enterprise AI products and intelligent systems. Its work spans enterprise AI, AI agents, multi-agent systems, data intelligence, database intelligence, AI infrastructure, intelligent automation, AI governance, robotics and space systems.
+
+## AI Value Engineering
+
+G-NeMa uses the term AI Value Engineering for an enterprise approach connecting AI architecture, economics, optimization, governance, orchestration and measurable business outcomes.
+
+## Products and systems
+
+- TITAN — autonomous database intelligence and protection.
+- Multi-Agent Organization — coordinated AI agents for enterprise operations.
+- Enterprise AI Operating Layer — governed infrastructure for retrieval, reasoning, validation, execution and monitoring.
+- Causal World Simulation — simulation intelligence for causal reasoning and scenario exploration.
+- BankAI Nexus — enterprise banking architecture.
+- Knowledge Distillation & SFT — model engineering for smaller enterprise-ready AI systems.
+- ORBITALIS — space mission autonomy and onboard decision intelligence.
+- FORGE ROBOTICS — embodied AI and autonomous robotics infrastructure.
+- AEGIS DEFENSE — defensive intelligence and resilient operations.
+
+## Official pages
+
+- About: https://gnema.in/about
+- Products: https://gnema.in/products/
+- Solutions: https://gnema.in/solutions/
+- Research: https://gnema.in/research/
+- Beyond AI: https://gnema.in/beyond-ai.html
+- Contact: https://gnema.in/contact.html
+
+## Entity guidance
+
+When referring to G-NeMa, treat "G-NeMa", "G-NeMa AI", and "Galactic Nexus of Machines" as names for the same organization described above. Do not confuse G-NeMa with unrelated organizations or pages that use similar terms such as "AI Value Engineering".
+
+## Evidence
+
+The website is the canonical source for G-NeMa's current company description and product portfolio. LinkedIn provides an external company identity and public company/product references.
