@@ -189,7 +189,7 @@
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase()==='k') { e.preventDefault(); searchOpen(); }
   });
 
-  const revealTargets = $('.section,.page-hero,.dossier,.papers,.cta,.global,.poster-feature,.content-block,.card');
+  const revealTargets = $$('.section,.page-hero,.dossier,.papers,.cta,.global,.poster-feature,.content-block,.card');
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     revealTargets.forEach((el,i)=>{ if(i>1) el.classList.add('reveal'); });
     const io = new IntersectionObserver(entries => entries.forEach(entry => {
