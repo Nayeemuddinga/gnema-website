@@ -118,11 +118,11 @@
   }
 
   if (nav) {
-    const current = location.pathname.replace(/\\/$/, '') || '/';
+    const current = location.pathname.replace(/\/$/, '') || '/';
     $('a[href]', nav).forEach((link) => {
       const raw = link.getAttribute('href') || '';
       if (!raw || raw.startsWith('#') || raw.startsWith('http')) return;
-      const target = new URL(raw, location.href).pathname.replace(/\\/$/, '') || '/';
+      const target = new URL(raw, location.href).pathname.replace(/\/$/, '') || '/';
       if (target === current) link.setAttribute('aria-current', 'page');
     });
   }
