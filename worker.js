@@ -16,6 +16,14 @@ export default {
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(HEADERS)) headers.set(name, value);
+
+    // Navigation assets must update immediately after a deployment.
+    const pathname = new URL(request.url).pathname;
+    if (pathname.endsWith('.css') || pathname.endsWith('.js')) {
+      headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate');
+      headers.set('CDN-Cache-Control', 'no-store');
+    }
+
     return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
   }
 };
