@@ -1,0 +1,870 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-11-22",
+  "authority": "G-NeMa remediation loop",
+  "allowed_product_statuses": [
+    "AVAILABLE",
+    "PILOT",
+    "IN_DEVELOPMENT",
+    "RESEARCH",
+    "BLOCKED",
+    "UNVERIFIED"
+  ],
+  "task_statuses": [
+    "TODO",
+    "IN_PROGRESS",
+    "BLOCKED",
+    "AWAITING_HUMAN",
+    "DONE_VERIFIED"
+  ],
+  "products": [
+    {
+      "name": "TITAN",
+      "status": "UNVERIFIED",
+      "evidence_links": [
+        "https://github.com/Nayeemuddinga/titan"
+      ],
+      "owner": "TBD",
+      "milestone": "Independent integrated certification"
+    },
+    {
+      "name": "Multi-Agent Organization",
+      "status": "UNVERIFIED",
+      "evidence_links": [
+        "https://github.com/Nayeemuddinga/titan"
+      ],
+      "owner": "TBD",
+      "milestone": "Agent orchestration validation"
+    },
+    {
+      "name": "G-NeMa AI Platform",
+      "status": "UNVERIFIED",
+      "evidence_links": [
+        "https://github.com/Nayeemuddinga/gnema-ai-platform"
+      ],
+      "owner": "TBD",
+      "milestone": "Engineering inventory"
+    },
+    {
+      "name": "AEGISDB Omni",
+      "status": "UNVERIFIED",
+      "evidence_links": [
+        "https://github.com/Nayeemuddinga/aegisdb-omni"
+      ],
+      "owner": "TBD",
+      "milestone": "Source review"
+    },
+    {
+      "name": "Causal World Simulation",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "BankAI Nexus",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "Enterprise AI Operating Layer",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "Knowledge Distillation & SFT",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "ORBITALIS",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "SENTINEL ORBIT",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "FORGE ROBOTICS",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "ATLAS AUTONOMY",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "AEGIS DEFENSE",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "SENTINEL CYBER",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    },
+    {
+      "name": "Frontier Research",
+      "status": "UNVERIFIED",
+      "evidence_links": [],
+      "owner": "TBD",
+      "milestone": "Evidence review"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "W1.1",
+      "workstream": "Website & launch",
+      "title": "Fix metadata and encoding",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "No duplicate viewport/OG/Twitter tags; canonicals valid"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Diff and validator output"
+    },
+    {
+      "id": "W1.2",
+      "workstream": "Website & launch",
+      "title": "Crawl and validate navigation links",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "Zero 404s and redirect chains"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Crawl report"
+    },
+    {
+      "id": "W1.3",
+      "workstream": "Website & launch",
+      "title": "Implement validated lead capture",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "Validated submission delivered and logged; error path works"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "AWAITING_HUMAN_IF_REQUIRED",
+      "required_evidence": "E2E test log"
+    },
+    {
+      "id": "W1.4",
+      "workstream": "Website & launch",
+      "title": "Verify Cloudflare status page deployment",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "Live 200 and committed content match"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "AWAITING_HUMAN_IF_REQUIRED",
+      "required_evidence": "Live fetch plus SHA"
+    },
+    {
+      "id": "W1.5",
+      "workstream": "Website & launch",
+      "title": "Enable uptime and error alerting",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "Monitor and alert test successful"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Dashboard screenshot"
+    },
+    {
+      "id": "W1.6",
+      "workstream": "Website & launch",
+      "title": "Publish maturity labels sitewide",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "Every product label matches registry"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Page diff"
+    },
+    {
+      "id": "W1.7",
+      "workstream": "Website & launch",
+      "title": "Automate sitemap lastmod",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "Rebuild on content commit"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "CI log"
+    },
+    {
+      "id": "W1.8",
+      "workstream": "Website & launch",
+      "title": "Tighten CSP and remove diagnostic headers",
+      "status": "TODO",
+      "owner_agent": "Web",
+      "priority": "P0",
+      "acceptance_criteria": [
+        "Report-only test then enforced; header audit clean"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Header scan"
+    },
+    {
+      "id": "W2.1",
+      "workstream": "Performance & quality",
+      "title": "Enforce Lighthouse CI performance budgets",
+      "status": "TODO",
+      "owner_agent": "Performance",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Automated lab budgets plus real-user p75 corroboration"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "CI Lighthouse report"
+    },
+    {
+      "id": "W2.2",
+      "workstream": "Performance & quality",
+      "title": "Collect real-user Web Vitals",
+      "status": "TODO",
+      "owner_agent": "Performance",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "RUM p75 data available"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "RUM dashboard"
+    },
+    {
+      "id": "W2.3",
+      "workstream": "Performance & quality",
+      "title": "Audit and optimize images",
+      "status": "TODO",
+      "owner_agent": "Performance",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Before/after payload and LCP image tracked"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Weight comparison"
+    },
+    {
+      "id": "W2.4",
+      "workstream": "Performance & quality",
+      "title": "Verify 5-minute cache post-deployment",
+      "status": "TODO",
+      "owner_agent": "Performance",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Repeat visit reduces transfer"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Network waterfall"
+    },
+    {
+      "id": "W2.5",
+      "workstream": "Performance & quality",
+      "title": "Implement automated deployment smoke tests",
+      "status": "TODO",
+      "owner_agent": "Performance",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Routes, links and forms pass per release"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "CI report"
+    },
+    {
+      "id": "W2.6",
+      "workstream": "Performance & quality",
+      "title": "Make forms accessible",
+      "status": "TODO",
+      "owner_agent": "Performance",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Axe zero critical errors"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Axe report"
+    },
+    {
+      "id": "W2.7",
+      "workstream": "Performance & quality",
+      "title": "Verify analytics events",
+      "status": "TODO",
+      "owner_agent": "Performance",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Lead and page events in debug view"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Debug trace"
+    },
+    {
+      "id": "W3.1",
+      "workstream": "TITAN certification",
+      "title": "Clean TITAN integrated installation",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Integrated components install successfully"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "AWAITING_HUMAN_IF_REQUIRED",
+      "required_evidence": "Install log"
+    },
+    {
+      "id": "W3.2",
+      "workstream": "TITAN certification",
+      "title": "Database regression suite",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Supported DB versions pass"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Test report"
+    },
+    {
+      "id": "W3.3",
+      "workstream": "TITAN certification",
+      "title": "Safe execution and rollback",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Failed actions roll back"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Test log"
+    },
+    {
+      "id": "W3.4",
+      "workstream": "TITAN certification",
+      "title": "Security assessment",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "No unresolved critical vulnerabilities"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Security report"
+    },
+    {
+      "id": "W3.5",
+      "workstream": "TITAN certification",
+      "title": "Measure operational impact",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Before/after measurements"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Metrics"
+    },
+    {
+      "id": "W3.6",
+      "workstream": "TITAN certification",
+      "title": "Approve TITAN release checklist",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Signed checklist"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "AWAITING_HUMAN_IF_REQUIRED",
+      "required_evidence": "Gate signoff"
+    },
+    {
+      "id": "W4.1",
+      "workstream": "Multi-Agent Control Center",
+      "title": "Inventory twelve agents",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Owner and status recorded for each"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Agent registry"
+    },
+    {
+      "id": "W4.2",
+      "workstream": "Multi-Agent Control Center",
+      "title": "Live Control Center panels",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Health, tasks, approvals, activity, cost and governance live"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "UI/API"
+    },
+    {
+      "id": "W4.3",
+      "workstream": "Multi-Agent Control Center",
+      "title": "Agent execution and failure injection",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Tool call and recovery demonstrated"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Test log"
+    },
+    {
+      "id": "W4.4",
+      "workstream": "Multi-Agent Control Center",
+      "title": "Agent tracing and telemetry",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "End-to-end trace available"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Trace"
+    },
+    {
+      "id": "W4.5",
+      "workstream": "Multi-Agent Control Center",
+      "title": "Measure bounded-task outcomes",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "At least 95 of 100 tasks succeed"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Run metrics"
+    },
+    {
+      "id": "W5.1",
+      "workstream": "Product registry",
+      "title": "Create product inventory",
+      "status": "TODO",
+      "owner_agent": "Data",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Every product and research program represented"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Registry"
+    },
+    {
+      "id": "W5.2",
+      "workstream": "Product registry",
+      "title": "Generate public status page from registry",
+      "status": "TODO",
+      "owner_agent": "Data",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Generated site matches source of truth"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Build log"
+    },
+    {
+      "id": "W5.3",
+      "workstream": "Product registry",
+      "title": "Require status evidence links",
+      "status": "TODO",
+      "owner_agent": "Data",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Every product evidence linked or UNVERIFIED"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Registry audit"
+    },
+    {
+      "id": "W6.1",
+      "workstream": "Management KPI dashboard",
+      "title": "Build live KPI dashboard",
+      "status": "TODO",
+      "owner_agent": "Data",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Metrics sourced live and missing numbers shown as TBD"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Dashboard"
+    },
+    {
+      "id": "W7.1",
+      "workstream": "Commercial rollout",
+      "title": "Certify TITAN paid pilot",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Signed paid pilot report"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "AWAITING_HUMAN_IF_REQUIRED",
+      "required_evidence": "Pilot report"
+    },
+    {
+      "id": "W7.2",
+      "workstream": "Commercial rollout",
+      "title": "Publish verified case study",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "At least one evidenced study"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Case study"
+    },
+    {
+      "id": "W7.3",
+      "workstream": "Commercial rollout",
+      "title": "Instrument conversion funnel",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Pricing-to-lead events available"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Funnel"
+    },
+    {
+      "id": "W7.4",
+      "workstream": "Commercial rollout",
+      "title": "Publish support commitments",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Support and SLA documented"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Support page"
+    },
+    {
+      "id": "W7.5",
+      "workstream": "Commercial rollout",
+      "title": "Commercial gate decision",
+      "status": "TODO",
+      "owner_agent": "Product",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Evidence supports scale/no-scale"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Gate record"
+    },
+    {
+      "id": "W8.1",
+      "workstream": "Verification gaps",
+      "title": "Verify Cloudflare release",
+      "status": "TODO",
+      "owner_agent": "QA",
+      "priority": "P1",
+      "acceptance_criteria": [
+        "Live route verified"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Fetch"
+    },
+    {
+      "id": "W8.2",
+      "workstream": "Verification gaps",
+      "title": "Verify published status page",
+      "status": "TODO",
+      "owner_agent": "QA",
+      "priority": "P1",
+      "acceptance_criteria": [
+        "Live route verified"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Fetch"
+    },
+    {
+      "id": "W8.3",
+      "workstream": "Verification gaps",
+      "title": "Measure live performance",
+      "status": "TODO",
+      "owner_agent": "QA",
+      "priority": "P1",
+      "acceptance_criteria": [
+        "p75 RUM available"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "RUM"
+    },
+    {
+      "id": "W8.4",
+      "workstream": "Verification gaps",
+      "title": "Inventory D GIT and Agent projects",
+      "status": "BLOCKED",
+      "owner_agent": "QA",
+      "priority": "P1",
+      "acceptance_criteria": [
+        "Complete file inventory"
+      ],
+      "evidence_links": [],
+      "blockers": [
+        "Desktop Commander monthly usage limit; requires restored access or user-provided local export"
+      ],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "AWAITING_HUMAN_IF_REQUIRED",
+      "required_evidence": "Local report"
+    },
+    {
+      "id": "W8.5",
+      "workstream": "Verification gaps",
+      "title": "Complete functional testing",
+      "status": "TODO",
+      "owner_agent": "QA",
+      "priority": "P1",
+      "acceptance_criteria": [
+        "All relevant suites green"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "CI"
+    },
+    {
+      "id": "W9.1",
+      "workstream": "Governance and reporting",
+      "title": "Evidence-link audit document",
+      "status": "TODO",
+      "owner_agent": "Reviewer",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "All factual completion claims linked"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Report diff"
+    },
+    {
+      "id": "W9.2",
+      "workstream": "Governance and reporting",
+      "title": "Publish weekly Friday report",
+      "status": "TODO",
+      "owner_agent": "Reviewer",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Dated weekly report"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Report"
+    },
+    {
+      "id": "W9.3",
+      "workstream": "Governance and reporting",
+      "title": "Update changelog",
+      "status": "TODO",
+      "owner_agent": "Reviewer",
+      "priority": "P2",
+      "acceptance_criteria": [
+        "Release changes recorded"
+      ],
+      "evidence_links": [],
+      "blockers": [],
+      "created_at": "2026-11-22",
+      "updated_at": "2026-11-22",
+      "gate": "NONE",
+      "required_evidence": "Changelog"
+    }
+  ]
+}
