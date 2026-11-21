@@ -17,11 +17,14 @@ export default {
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(HEADERS)) headers.set(name, value);
 
-    // Navigation assets must update immediately after a deployment.
+    // Revalidate stable asset URLs rather than disabling their cache entirely.
+    // Keep versioned filenames eligible for long immutable caching in future builds.
     const pathname = new URL(request.url).pathname;
-    if (pathname.endsWith('.css') || pathname.endsWith('.js')) {
-      headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate');
-      headers.set('CDN-Cache-Control', 'no-store');
+    if (/\.(?:css|js)$/i.test(pathname)) {
+      headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
+      headers.delete('CDN-Cache-Control');
+    } else if (pathname.endsWith('.html') || pathname === '/' || !pathname.split('/').pop().includes('.')) {
+      headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
     }
 
     return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
